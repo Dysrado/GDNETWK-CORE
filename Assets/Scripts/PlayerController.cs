@@ -10,11 +10,15 @@ public class PlayerController : NetworkBehaviour
     private Vector3 moveInput;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+    //public override void OnNetworkSpawn()
+    //{
+    //    if (!IsOwner) Destroy(this);
+    //}
     // Update is called once per frame
     void Update()
     {
