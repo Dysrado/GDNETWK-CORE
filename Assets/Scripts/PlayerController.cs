@@ -14,6 +14,7 @@ public class PlayerController : NetworkBehaviour
     private Vector3 mousePos;
 
     private string playerName;
+    Vector3 lookDirection = Vector3.zero;
 
     // Start is called before the first frame update
     void Awake()
@@ -34,7 +35,7 @@ public class PlayerController : NetworkBehaviour
 
         mousePos = Input.mousePosition;
         Ray r = mainCamera.ScreenPointToRay(mousePos);
-        Vector3 lookDirection = Vector3.zero;
+        
 
         if (Physics.Raycast(r, out RaycastHit hit))
         {
