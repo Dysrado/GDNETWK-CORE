@@ -7,10 +7,19 @@ public class PlayerNetwork : NetworkBehaviour
 {
     private readonly NetworkVariable<Vector3> NetPos = new (writePerm: NetworkVariableWritePermission.Owner);
     private readonly NetworkVariable<Quaternion> NetRot = new (writePerm: NetworkVariableWritePermission.Owner);
+    private readonly NetworkVariable<Color> NetColor = new();
+    private readonly Color[] colors = { Color.red, Color.blue, Color.green, Color.yellow, Color.black, Color.white, Color.cyan, Color.gray};
+    int index;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        index = (int)OwnerClientId;
+        GetComponent<MeshRenderer>().material.color = colors[index % colors.Length];
     }
 
     // Update is called once per frame
