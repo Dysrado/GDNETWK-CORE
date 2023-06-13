@@ -39,12 +39,10 @@ public class PlayerController : NetworkBehaviour
 
         if (Physics.Raycast(r, out RaycastHit hit))
         {
-            if (!hit.collider.gameObject.CompareTag("Player"))
-            {
-                lookDirection = hit.point;
-            }
+            lookDirection = hit.point;
+
         }
-        transform.LookAt(new Vector3(lookDirection.x, 0, lookDirection.z));
+        transform.LookAt(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
     }
 
     private void FixedUpdate()

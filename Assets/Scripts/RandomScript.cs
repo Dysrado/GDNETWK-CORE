@@ -15,6 +15,7 @@ public class RandomScript : MonoBehaviour
 
     [SerializeField] string ipAddress;
     [SerializeField] UnityTransport transport;
+    [SerializeField] GameObject lobbyUI;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class RandomScript : MonoBehaviour
         {
             NetworkManager.Singleton.StartHost();
             //this.gameObject.SetActive(false);
+            lobbyUI.SetActive(false);
             GetLocalIPAddress();
         }
        
@@ -44,9 +46,11 @@ public class RandomScript : MonoBehaviour
             ipAddress = ip.text;
             SetIpAddress();
             NetworkManager.Singleton.StartClient();
-           // this.gameObject.SetActive(false);
+            lobbyUI.SetActive(false);
+            ipAddressText.SetText(ipAddress);
+            // this.gameObject.SetActive(false);
         }
-        
+
     }
 
     /* Gets the Ip Address of your connected network and
