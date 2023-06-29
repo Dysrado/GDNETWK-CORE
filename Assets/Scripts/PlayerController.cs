@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Unity.Netcode;
 
@@ -16,11 +17,25 @@ public class PlayerController : NetworkBehaviour
     private string playerName;
     Vector3 lookDirection = Vector3.zero;
 
+    [SerializeField] KeyCode DASH_BUTTON = KeyCode.Space;
+    [SerializeField] KeyCode ALT_DASH_BUTTON = KeyCode.LeftShift;
+
+    [SerializeField] float _dashDuration = 0.2f; // Duration of the dash
+    [SerializeField] float _dashCooldown = 0.5f; // Time you can do the next dash
+    [SerializeField] float DASH_MULTIPLIER = 2.0f; // For how many seconds is the dash
+
+    Vector3 _dashDirection = Vector3.zero; // Direction of the dash
+    float _dashSpeed;
+
+    bool _canDash = true; // Can the player dash
+    bool _isDashing = false; // Is currently dashing
+
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
+        _dashSpeed = speed * DASH_MULTIPLIER;
     }
 
     //public override void OnNetworkSpawn()
@@ -30,12 +45,22 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.z = Input.GetAxisRaw("Vertical");
-
         mousePos = Input.mousePosition;
         Ray r = mainCamera.ScreenPointToRay(mousePos);
-        
+
+        if (Input.GetKeyDown(DASH_BUTTON) || Input.GetKeyDown(ALT_DASH_BUTTON))
+        {
+            if (!_isDashing && _canDash)
+            {
+                Dash(_dashDuration); // The actual dash
+                StartDashCD(_dashCooldown); // When Dash() finishes do StartDashCD()
+            }
+        }
+        else
+        {
+            moveInput.x = Input.GetAxisRaw("Horizontal");
+            moveInput.z = Input.GetAxisRaw("Vertical");
+        }
 
         if (Physics.Raycast(r, out RaycastHit hit))
         {
@@ -47,7 +72,43 @@ public class PlayerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(moveInput.x, 0, moveInput.z).normalized * speed * Time.deltaTime;
+        if (!_isDashing)
+        {
+            rb.velocity = new Vector3(moveInput.x, 0, moveInput.z).normalized * speed * Time.deltaTime;
+        }
+        else
+        {
+            rb.velocity = new Vector3(_dashDirection.x, 0, _dashDirection.z).normalized * _dashSpeed * Time.deltaTime;
+        }
+    }
+
+
+    // async = coroutine
+    // Gets the moveInput then dashes to the direction for "duration" amount of seconds
+    public async void Dash(float duration) 
+    {
+        var endtime = Time.time + duration;
+        _dashDirection = moveInput;
+        while (Time.time < endtime)
+        {
+            _isDashing = true;
+            await Task.Yield();
+            _isDashing = false;
+            _canDash = false;
+            Debug.Log($"Dashed - candash: {_canDash}");
+        }
+    }
+
+    // Starts the timer for the cooldown
+    public async void StartDashCD(float duration)
+    {
+        var endtime = Time.time + duration;
+        while(Time.time < endtime)
+        {
+            _canDash = false;
+            await Task.Yield();
+            _canDash = true;
+        }
     }
 
     public string GetPlayerName() { return playerName; }
