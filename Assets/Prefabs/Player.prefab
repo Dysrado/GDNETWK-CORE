@@ -213,9 +213,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7905095308143297095, guid: d12f91d6be552474588a33827fc49162, type: 3}
-  projectileSpeed: 10
   spawnOffset: 1
-  bullet_despawn_lifetime: 0.6
+  projectileSpeed: 10
+  clipSize: 0
+  reserveAmmo: 0
+  currentAmmo: 0
+  reloadSpeed: 1
 --- !u!1 &6609099632623273609
 GameObject:
   m_ObjectHideFlags: 0

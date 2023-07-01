@@ -7,7 +7,7 @@ public class PlayerShooting : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCamera;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] float spawnOffset = 1.0f;
+    [SerializeField] private float spawnOffset = 1.0f;
     private GameObject bullet;
 
     // Unique Gun Variables
@@ -58,8 +58,8 @@ public class PlayerShooting : MonoBehaviour
                 StartCoroutine(ReloadGun());
         }
 
-        // Manual Reload
-        if(Input.GetKeyDown(KeyCode.R))
+        // Manual Reload 
+        if(Input.GetKeyDown(KeyCode.R) && currentAmmo != clipSize)
         {
             StartCoroutine(ReloadGun());   
         }
