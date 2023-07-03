@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float spawnOffset = 1.0f;
     private GameObject bullet;
+    private bool isReloading;
 
     // Unique Gun Variables
     [SerializeField] private float projectileSpeed = 3.0f;
@@ -24,6 +25,7 @@ public class PlayerShooting : MonoBehaviour
         reserveAmmo = 100;
         clipSize = 10;
         currentAmmo = clipSize;
+        isReloading = false;
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class PlayerShooting : MonoBehaviour
         Debug.Log(mousePos);
 
         // Fire bullet
-        if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && !isReloading)
         {
             // Get direction towards mouse
             Vector3 playerToMouse;
@@ -61,6 +63,7 @@ public class PlayerShooting : MonoBehaviour
         // Manual Reload 
         if(Input.GetKeyDown(KeyCode.R) && currentAmmo != clipSize)
         {
+            isReloading = true;
             StartCoroutine(ReloadGun());   
         }
 
@@ -75,5 +78,6 @@ public class PlayerShooting : MonoBehaviour
         {
             currentAmmo = clipSize;
         }
+        isReloading = false;
     }
 }

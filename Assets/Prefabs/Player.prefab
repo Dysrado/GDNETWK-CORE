@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -8924433781102704555}
   - component: {fileID: 2562556620258035188}
   - component: {fileID: 3375468961704816749}
+  - component: {fileID: 6832843928220376619}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -219,6 +220,18 @@ MonoBehaviour:
   reserveAmmo: 0
   currentAmmo: 0
   reloadSpeed: 1
+--- !u!114 &6832843928220376619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500183327185611300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bce385ab576f148b767fb11694f2a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6609099632623273609
 GameObject:
   m_ObjectHideFlags: 0
