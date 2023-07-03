@@ -9,12 +9,12 @@ public class PlayerController : NetworkBehaviour
     private Camera mainCamera;
 
     [SerializeField] private float speed = 250.0f;
+    private float rotationSpeed = 1000.0f;
 
     private Vector3 moveInput;
     private Vector3 mousePos;
 
     private string playerName;
-    Vector3 lookDirection = Vector3.zero;
 
     // Start is called before the first frame update
     void Awake()
@@ -39,10 +39,16 @@ public class PlayerController : NetworkBehaviour
 
         if (Physics.Raycast(r, out RaycastHit hit))
         {
-            lookDirection = hit.point;
+            if (!hit.collider.gameObject.CompareTag("Player"))
+            {
+                var lookDirection = hit.point - transform.position;
+                var rotation = Quaternion.LookRotation(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
+
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            }
+            
 
         }
-        transform.LookAt(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
     }
 
     private void FixedUpdate()
