@@ -11,7 +11,7 @@ public class WeaponClass : MonoBehaviour
     private Camera mainCamera;
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected float spawnOffset = 1.0f;
-    private bool isReloading;
+    protected bool isReloading;
 
     // Unique Gun Variables
     [SerializeField] protected float projectileSpeed = 3.0f;
@@ -34,7 +34,7 @@ public class WeaponClass : MonoBehaviour
     }
 
     // Always call this on the update function for aiming 
-    protected virtual void SetAim() 
+    protected virtual void SetAim()
     {
         // Get world space mouse position
         Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -43,33 +43,30 @@ public class WeaponClass : MonoBehaviour
             mousePos = hit.point;
         }
     }
-    
+
     public virtual void Fire()
     {
-        // Fire bullet
-        if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && !isReloading)
-        {
-            // Get direction towards mouse
-            Vector3 playerToMouse;
-            playerToMouse = mousePos - transform.position;
-            playerToMouse = playerToMouse.normalized;
+        
+        // Get direction towards mouse
+        Vector3 playerToMouse;
+        playerToMouse = mousePos - transform.position;
+        playerToMouse = playerToMouse.normalized;
 
-            // Spawn bullet
-            GameObject bullet = Instantiate(bulletPrefab, transform.position + (new Vector3(playerToMouse.x, 0, playerToMouse.z) * spawnOffset), bulletPrefab.transform.rotation);
-            Rigidbody bulletRb;
-            bulletRb = bullet.GetComponent<Rigidbody>();
-            // Apply force to bullet
-            bulletRb.AddForce(playerToMouse * projectileSpeed, ForceMode.Impulse);
-            Debug.Log("Shoot!");
+        // Spawn bullet
+        GameObject bullet = Instantiate(bulletPrefab, transform.position + (new Vector3(playerToMouse.x, 0, playerToMouse.z) * spawnOffset), bulletPrefab.transform.rotation);
+        Rigidbody bulletRb;
+        bulletRb = bullet.GetComponent<Rigidbody>();
+        // Apply force to bullet
+        bulletRb.AddForce(playerToMouse * projectileSpeed, ForceMode.Impulse);
+        Debug.Log("Shoot!");
 
 
-            Destroy(bullet, bulletLifetime); // This can be optimized
+        Destroy(bullet, bulletLifetime); // This can be optimized
 
-            currentAmmo--; // Reduce clip by 1
-            // Automatic Reload, can remove if not needed
-            if (currentAmmo <= 0)
-                StartCoroutine(ReloadGun());
-        }
+        currentAmmo--; // Reduce clip by 1
+                       // Automatic Reload, can remove if not needed
+        if (currentAmmo <= 0)
+            StartCoroutine(ReloadGun());
     }
 
     public virtual void Reload()
@@ -92,5 +89,15 @@ public class WeaponClass : MonoBehaviour
         isReloading = false;
     }
 
+    [ServerRpc]
+    protected void RequestFireServerRpc()
+    {
+        ExecureFire();
+    }
 
+    [ClientRpc]
+    protected void ExecureFire()
+    {
+        Fire();
+    }
 }

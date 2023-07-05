@@ -15,7 +15,12 @@ public class Magnum : WeaponClass
     void Update()
     {
         SetAim();
-        Fire();
+        // Fire bullet
+        if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && !isReloading)
+        {
+            RequestFireServerRpc();
+        }
+        
         Reload();
     }
 
