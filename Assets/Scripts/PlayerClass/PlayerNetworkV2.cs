@@ -10,6 +10,9 @@ public class PlayerNetworkV2 : NetworkBehaviour
 {
     [SerializeField] private bool _serverAuth;
     [SerializeField] private float _cheapInterpolationTime = 0.1f;
+    private readonly NetworkVariable<Color> NetColor = new();
+    private readonly Color[] colors = { Color.red, Color.blue, Color.green, Color.yellow, Color.black, Color.white, Color.cyan, Color.gray };
+    int index;
 
     private NetworkVariable<PlayerNetworkState> _playerState;
     private Rigidbody _rb;
@@ -27,6 +30,9 @@ public class PlayerNetworkV2 : NetworkBehaviour
     {
         if (!IsOwner) 
             this.enabled = false;
+
+        index = (int)OwnerClientId;
+        GetComponent<MeshRenderer>().material.color = colors[index % colors.Length];
     }
 
     // Update is called once per frame
