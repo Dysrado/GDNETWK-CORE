@@ -34,7 +34,7 @@ public class WeaponClass : NetworkBehaviour
     }
 
     // Always call this on the update function for aiming 
-    protected virtual void SetAim()
+    protected virtual Vector3 SetAim()
     {
         // Get world space mouse position
         Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -42,16 +42,16 @@ public class WeaponClass : NetworkBehaviour
         {
             mousePos = hit.point;
         }
-    }
-
-    public virtual void Fire()
-    {
-        
         // Get direction towards mouse
         Vector3 playerToMouse;
         playerToMouse = mousePos - transform.position;
         playerToMouse = playerToMouse.normalized;
 
+        return playerToMouse;
+    }
+
+    public virtual void Fire(Vector3 playerToMouse)
+    {
         // Spawn bullet
         GameObject bullet = Instantiate(bulletPrefab, transform.position + (new Vector3(playerToMouse.x, 0, playerToMouse.z) * spawnOffset), bulletPrefab.transform.rotation);
         Rigidbody bulletRb;
@@ -90,14 +90,15 @@ public class WeaponClass : NetworkBehaviour
     }
 
     [ServerRpc]
-    protected void RequestFireServerRpc()
+    protected void RequestFireServerRpc(Vector3 playerToMouse)
     {
-        ExecuteFireClientRpc();
+        ExecuteFireClientRpc(playerToMouse);
     }
 
     [ClientRpc]
-    protected void ExecuteFireClientRpc()
+    protected void ExecuteFireClientRpc(Vector3 playerToMouse)
     {
-        Fire();
+        if(!IsOwner)
+            Fire(playerToMouse);
     }
 }

@@ -17,11 +17,12 @@ public class Magnum : WeaponClass
     void Update()
     {
         if (!IsOwner) return;
-        SetAim();
+        Vector3 dir = SetAim();
         // Fire bullet
         if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && !isReloading)
         {
-            RequestFireServerRpc();
+            RequestFireServerRpc(dir);
+            Fire(dir);
         }
         
         Reload();
