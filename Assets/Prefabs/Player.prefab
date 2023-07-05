@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3375468961704816749}
   - component: {fileID: 6832843928220376619}
   - component: {fileID: 4526655702516376821}
+  - component: {fileID: 6065288973132787067}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -197,7 +198,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2500183327185611300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1227252e4751b5346b1e7a967b68af99, type: 3}
   m_Name: 
@@ -261,6 +262,20 @@ MonoBehaviour:
   reloadSpeed: 1
   bulletLifetime: 0.6
   fireRate: 0.6
+--- !u!114 &6065288973132787067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500183327185611300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90aa83792fed9342b5b21b54c0b2713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serverAuth: 0
+  _cheapInterpolationTime: 0.1
 --- !u!1 &6609099632623273609
 GameObject:
   m_ObjectHideFlags: 0
