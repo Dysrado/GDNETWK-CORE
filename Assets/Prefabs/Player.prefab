@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 2562556620258035188}
   - component: {fileID: 3375468961704816749}
   - component: {fileID: 6832843928220376619}
+  - component: {fileID: 4526655702516376821}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -201,6 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1227252e4751b5346b1e7a967b68af99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _serverAuth: 0
+  _cheapInterpolationTime: 0.1
 --- !u!114 &3375468961704816749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +211,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2500183327185611300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a54457e27e52cd4469caed93fe2b94c2, type: 3}
   m_Name: 
@@ -220,6 +223,7 @@ MonoBehaviour:
   reserveAmmo: 0
   currentAmmo: 0
   reloadSpeed: 1
+  bulletLifetime: 0.6
 --- !u!114 &6832843928220376619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +236,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bce385ab576f148b767fb11694f2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  currentEquippedWeapon: 
+--- !u!114 &4526655702516376821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500183327185611300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42c16dd455bde54b925d0cce2a14a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName: Magnum
+  bulletPrefab: {fileID: 7905095308143297095, guid: d12f91d6be552474588a33827fc49162, type: 3}
+  spawnOffset: 1
+  projectileSpeed: 10
+  clipSize: 0
+  reserveAmmo: 100
+  currentAmmo: 10
+  reloadSpeed: 1
+  bulletLifetime: 0.6
+  fireRate: 0.6
 --- !u!1 &6609099632623273609
 GameObject:
   m_ObjectHideFlags: 0

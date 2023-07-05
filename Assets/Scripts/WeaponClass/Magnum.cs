@@ -14,11 +14,9 @@ public class Magnum : WeaponClass
     // Update is called once per frame
     void Update()
     {
-        
+        SetAim();
+        Fire();
+        Reload();
     }
 
-    public override void Fire()
-    {
-
-    }
 }

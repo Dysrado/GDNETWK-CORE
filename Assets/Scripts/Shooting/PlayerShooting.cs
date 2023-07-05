@@ -8,7 +8,6 @@ public class PlayerShooting : MonoBehaviour
     private Camera mainCamera;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float spawnOffset = 1.0f;
-    private GameObject bullet;
     private bool isReloading;
 
     // Unique Gun Variables
@@ -17,6 +16,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private int reserveAmmo;
     [SerializeField] private int currentAmmo;
     [SerializeField] private float reloadSpeed = 1.0f;
+    [SerializeField] private float bulletLifetime = 0.6f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,12 +48,16 @@ public class PlayerShooting : MonoBehaviour
             playerToMouse = playerToMouse.normalized;
 
             // Spawn bullet
-            bullet = Instantiate(bulletPrefab, transform.position + (new Vector3(playerToMouse.x, 0, playerToMouse.z) * spawnOffset), bulletPrefab.transform.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position + (new Vector3(playerToMouse.x, 0, playerToMouse.z) * spawnOffset), bulletPrefab.transform.rotation);
             Rigidbody bulletRb;
             bulletRb = bullet.GetComponent<Rigidbody>();
             // Apply force to bullet
             bulletRb.AddForce(playerToMouse * projectileSpeed, ForceMode.Impulse);
             Debug.Log("Shoot!");
+
+
+            Destroy(bullet, bulletLifetime); // This can be optimized
+
             currentAmmo--; // Reduce clip by 1
             // Automatic Reload, can remove if not needed
             if(currentAmmo <= 0)
