@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class WeaponClass : MonoBehaviour
+public class WeaponClass : NetworkBehaviour
 {
 
     [SerializeField] protected string WeaponName;
@@ -92,11 +92,11 @@ public class WeaponClass : MonoBehaviour
     [ServerRpc]
     protected void RequestFireServerRpc()
     {
-        ExecureFire();
+        ExecuteFireClientRpc();
     }
 
     [ClientRpc]
-    protected void ExecureFire()
+    protected void ExecuteFireClientRpc()
     {
         Fire();
     }
