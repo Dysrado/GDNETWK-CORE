@@ -17,8 +17,10 @@ GameObject:
   - component: {fileID: 2793145417169905467}
   - component: {fileID: -8924433781102704555}
   - component: {fileID: 6832843928220376619}
-  - component: {fileID: 4526655702516376821}
   - component: {fileID: 6065288973132787067}
+  - component: {fileID: 4526655702516376821}
+  - component: {fileID: 3147291636996979635}
+  - component: {fileID: 1304664411715950416}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -203,7 +205,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
-  currentEquippedWeapon: 
+  magnum: {fileID: 0}
+  smg: {fileID: 0}
+  sniper: {fileID: 0}
+--- !u!114 &6065288973132787067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500183327185611300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90aa83792fed9342b5b21b54c0b2713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serverAuth: 0
+  _cheapInterpolationTime: 0.1
 --- !u!114 &4526655702516376821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,14 +237,14 @@ MonoBehaviour:
   WeaponName: Magnum
   bulletPrefab: {fileID: 7905095308143297095, guid: d12f91d6be552474588a33827fc49162, type: 3}
   spawnOffset: 1
-  projectileSpeed: 10
-  clipSize: 0
+  projectileSpeed: 100
+  clipSize: 10
   reserveAmmo: 100
   currentAmmo: 10
   reloadSpeed: 1
   bulletLifetime: 0.6
   fireRate: 0.6
---- !u!114 &6065288973132787067
+--- !u!114 &3147291636996979635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,11 +253,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 2500183327185611300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90aa83792fed9342b5b21b54c0b2713, type: 3}
+  m_Script: {fileID: 11500000, guid: d6fea729fa2f8c241ac9859d7996b435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serverAuth: 0
-  _cheapInterpolationTime: 0.1
+  WeaponName: SMG
+  bulletPrefab: {fileID: 7905095308143297095, guid: d12f91d6be552474588a33827fc49162, type: 3}
+  spawnOffset: 1
+  projectileSpeed: 0
+  clipSize: 0
+  reserveAmmo: 0
+  currentAmmo: 0
+  reloadSpeed: 0
+  bulletLifetime: 0
+  fireRate: 0
+--- !u!114 &1304664411715950416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500183327185611300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798ad9fc198505347835a991c794a261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName: Sniper
+  bulletPrefab: {fileID: 7905095308143297095, guid: d12f91d6be552474588a33827fc49162, type: 3}
+  spawnOffset: 1
+  projectileSpeed: 0
+  clipSize: 0
+  reserveAmmo: 0
+  currentAmmo: 0
+  reloadSpeed: 0
+  bulletLifetime: 0
+  fireRate: 0
 --- !u!1 &6609099632623273609
 GameObject:
   m_ObjectHideFlags: 0

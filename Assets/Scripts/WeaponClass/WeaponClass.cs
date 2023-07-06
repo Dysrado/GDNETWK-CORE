@@ -12,24 +12,22 @@ public class WeaponClass : NetworkBehaviour
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected float spawnOffset = 1.0f;
     protected bool isReloading;
+    protected bool canFire;
 
-    // Unique Gun Variables
-    [SerializeField] protected float projectileSpeed = 3.0f;
-    [SerializeField] protected int clipSize; // max size of current ammo
-    [SerializeField] protected int reserveAmmo = 100;
-    [SerializeField] protected int currentAmmo = 10;
-    [SerializeField] protected float reloadSpeed = 1.0f;
-    [SerializeField] protected float bulletLifetime = 0.6f;
-    [SerializeField] protected float fireRate = 0.6f;
-
+    // Unique Gun Variables - gonna make public for now for testing
+    public float projectileSpeed;
+    public int clipSize; // max size of current ammo
+    public int reserveAmmo;
+    public int currentAmmo;
+    public float reloadSpeed;
+    public float bulletLifetime;
+    public float fireRate;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
-        reserveAmmo = 100;
-        clipSize = 10;
-        currentAmmo = clipSize;
+        canFire = true;
         isReloading = false;
     }
 
@@ -65,25 +63,31 @@ public class WeaponClass : NetworkBehaviour
 
         currentAmmo--; // Reduce clip by 1
                        // Automatic Reload, can remove if not needed
-        if (currentAmmo <= 0)
+        if (currentAmmo <= 0 && reserveAmmo - clipSize >= 0)
             StartCoroutine(ReloadGun());
+        Debug.Log("Current Ammo: " + currentAmmo);
+        StartCoroutine(WaitBetweenShots());
     }
 
     public virtual void Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R) && currentAmmo != clipSize)
-        {
-            isReloading = true;
-            StartCoroutine(ReloadGun());
-        }
+        isReloading = true;
+        StartCoroutine(ReloadGun());
+    }
+
+    public virtual IEnumerator WaitBetweenShots()
+    {
+        canFire = false;
+        yield return new WaitForSeconds(fireRate);
+        canFire = true;
     }
 
     protected virtual IEnumerator ReloadGun()
     {
         yield return new WaitForSeconds(reloadSpeed);
-        reserveAmmo -= clipSize;
-        if (reserveAmmo >= 0)
+        if(reserveAmmo - clipSize >= 0)
         {
+            reserveAmmo -= clipSize;
             currentAmmo = clipSize;
         }
         isReloading = false;

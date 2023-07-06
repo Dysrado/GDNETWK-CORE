@@ -4,18 +4,18 @@ using UnityEngine;
 using Unity.Netcode;
 
 
-public class Magnum : WeaponClass
+public class SMG : WeaponClass
 {
 
     // Start is called before the first frame update
     void Awake()
     {
-        projectileSpeed = 18.0f;
-        reloadSpeed = 1.0f;
-        bulletLifetime = 1.6f;
-        reserveAmmo = 60;
-        clipSize = 6;
-        fireRate = 0.6f;
+        projectileSpeed = 13.0f;
+        reloadSpeed = 1.6f;
+        bulletLifetime = 1.2f;
+        reserveAmmo = 225;
+        clipSize = 15;
+        fireRate = 0.2f;
         currentAmmo = clipSize;
     }
 
