@@ -64,7 +64,7 @@ public class PlayerController : NetworkBehaviour
 
         if (Physics.Raycast(r, out RaycastHit hit))
         {
-            if (!hit.collider.gameObject.CompareTag("Player"))
+            if (hit.collider.gameObject != this.gameObject)
             {
                 var lookDirection = hit.point - transform.position;
                 var rotation = Quaternion.LookRotation(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
