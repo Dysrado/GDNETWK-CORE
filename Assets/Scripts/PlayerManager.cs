@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
@@ -46,4 +47,16 @@ public class PlayerManager : MonoBehaviour
             sniper.enabled = true;
         }
     }
+
+    //Bullet Detection
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullets"))
+        {
+            Debug.LogWarning("Collided with a bullet");
+        }
+        
+    }
+
+
 }
