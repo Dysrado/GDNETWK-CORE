@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEditor.PackageManager;
+
 
 public class WeaponClass : NetworkBehaviour
 {
@@ -52,13 +54,16 @@ public class WeaponClass : NetworkBehaviour
     {
         // Spawn bullet
         GameObject bullet = Instantiate(bulletPrefab, transform.position + (new Vector3(playerToMouse.x, 0, playerToMouse.z) * spawnOffset), bulletPrefab.transform.rotation);
+        
+        bullet.AddComponent<BulletID>().Initialize((int)OwnerClientId);
+       
         Rigidbody bulletRb;
         bulletRb = bullet.GetComponent<Rigidbody>();
         // Apply force to bullet
         bulletRb.AddForce(playerToMouse * projectileSpeed, ForceMode.Impulse);
         Debug.Log("Shoot!");
 
-
+        
         Destroy(bullet, bulletLifetime); // This can be optimized
 
         currentAmmo--; // Reduce clip by 1
