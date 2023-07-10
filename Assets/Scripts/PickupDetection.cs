@@ -35,6 +35,17 @@ public class PickupDetection : NetworkBehaviour
         {
             Debug.LogWarning("Collided with a pickup");
             //RequestDeletePickupServerRpc(other.gameObject);
+
+            if (magnum.isActiveAndEnabled)
+                magnum.RecoverAmmo();
+
+            else if (smg.isActiveAndEnabled)
+                smg.RecoverAmmo();
+
+            else if (sniper.isActiveAndEnabled)
+                sniper.RecoverAmmo();
+
+
             Destroy(other.gameObject);
         }
     }

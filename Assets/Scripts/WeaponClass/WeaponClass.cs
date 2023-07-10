@@ -75,6 +75,12 @@ public class WeaponClass : NetworkBehaviour
         StartCoroutine(ReloadGun());
     }
 
+    //Need to replace to be virtual function. Each weapon have their definition how to add bullets.
+    public void RecoverAmmo()
+    {
+        reserveAmmo += clipSize * 2;
+    }
+
     public virtual IEnumerator WaitBetweenShots()
     {
         canFire = false;
