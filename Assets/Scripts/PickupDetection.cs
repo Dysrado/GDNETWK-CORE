@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.VisualScripting;
 
 public class PickupDetection : NetworkBehaviour
 {
@@ -45,22 +46,13 @@ public class PickupDetection : NetworkBehaviour
             else if (sniper.isActiveAndEnabled)
                 sniper.RecoverAmmo();
 
-
-            Destroy(other.gameObject);
+            other.GetComponent<NetworkObject>().Despawn(); 
+           // RequestDeletePickupServerRpc(other.GetComponent<NetworkObject>());
         }
     }
 
-    //[ServerRpc]
-    //protected void RequestDeletePickupServerRpc(GameObject pickup)
-    //{
-    //    ExecuteClientDeletePickupClientRpc(pickup);
-    //}
+    
 
-    //[ClientRpc]
-    //protected void ExecuteClientDeletePickupClientRpc(GameObject pickup)
-    //{
-    //    if (!IsOwner)
-    //        Destroy(pickup);
-    //}
+   
 
 }
