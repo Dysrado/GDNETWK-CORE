@@ -233,6 +233,7 @@ MonoBehaviour:
   - {fileID: 5624693007489312907}
   - {fileID: 5624693007489312901}
   - {fileID: 5624693007489312903}
+  _nameTag: {fileID: 2055345615852898452, guid: 7dd2d97209a0dfa4bad3b0583f7035da, type: 3}
 --- !u!114 &4526655702516376821
 MonoBehaviour:
   m_ObjectHideFlags: 0

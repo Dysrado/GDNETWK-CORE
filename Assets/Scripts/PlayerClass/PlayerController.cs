@@ -16,7 +16,6 @@ public class PlayerController : NetworkBehaviour
     private Vector3 moveInput;
     private Vector3 mousePos;
 
-    private string playerName;
     [SerializeField] Animator _anim;
 
     [SerializeField] KeyCode DASH_BUTTON = KeyCode.Space;
@@ -32,7 +31,7 @@ public class PlayerController : NetworkBehaviour
     bool _canDash = true; // Can the player dash
     bool _isDashing = false; // Is currently dashing
 
-    [SerializeField] NetworkVariable<PlayerState> networkPlayerState = new NetworkVariable<PlayerState> ();
+    [SerializeField] NetworkVariable<PlayerState> networkPlayerState = new NetworkVariable<PlayerState>();
 
     // Start is called before the first frame update
     void Awake()
@@ -40,6 +39,12 @@ public class PlayerController : NetworkBehaviour
         rb = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         _dashSpeed = speed * DASH_MULTIPLIER;
+        
+    }
+
+    private void Start()
+    {
+        
     }
 
     //public override void OnNetworkSpawn()
@@ -66,6 +71,7 @@ public class PlayerController : NetworkBehaviour
             moveInput.z = Input.GetAxisRaw("Vertical");
 
         }
+
 
         if (IsOwner)
         {
@@ -166,6 +172,8 @@ public class PlayerController : NetworkBehaviour
         networkPlayerState.Value = state;
     }
 
+
+
     public enum PlayerState
     {
         IDLE = 0,
@@ -173,4 +181,9 @@ public class PlayerController : NetworkBehaviour
         DASHING,
         DEAD
     }
+
+
+
+ 
+
 }

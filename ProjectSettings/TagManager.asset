@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pickup
   - Bullets
+  - Username
+  - WorldSpace
   layers:
   - Default
   - TransparentFX

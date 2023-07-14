@@ -12,8 +12,11 @@ public class RandomScript : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI ipAddressText;
     [SerializeField] TMP_InputField ip;
+    [SerializeField] TMP_InputField username;
 
     [SerializeField] string ipAddress;
+    [SerializeField] string usernameStr;
+    [SerializeField] TMP_Text usernameUI;
     [SerializeField] UnityTransport transport;
     [SerializeField] GameObject lobbyUI;
 
@@ -34,6 +37,8 @@ public class RandomScript : MonoBehaviour
             //this.gameObject.SetActive(false);
             lobbyUI.SetActive(false);
             GetLocalIPAddress();
+            usernameStr = username.text;
+            usernameUI.text = usernameStr;
         }
        
     }
@@ -49,6 +54,8 @@ public class RandomScript : MonoBehaviour
             lobbyUI.SetActive(false);
             ipAddressText.SetText(ipAddress);
             // this.gameObject.SetActive(false);
+            usernameStr = username.text;
+            usernameUI.text = usernameStr;
         }
 
     }
