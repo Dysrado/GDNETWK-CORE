@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using UnityEngine.Animations;
 using Unity.Netcode;
 
 public class PlayerController : NetworkBehaviour
@@ -17,6 +17,7 @@ public class PlayerController : NetworkBehaviour
     private Vector3 mousePos;
 
     private string playerName;
+    [SerializeField] Animator _anim;
 
     [SerializeField] KeyCode DASH_BUTTON = KeyCode.Space;
     [SerializeField] KeyCode ALT_DASH_BUTTON = KeyCode.LeftShift;
@@ -31,7 +32,7 @@ public class PlayerController : NetworkBehaviour
     bool _canDash = true; // Can the player dash
     bool _isDashing = false; // Is currently dashing
 
-
+    [SerializeField] NetworkVariable<PlayerState> networkPlayerState = new NetworkVariable<PlayerState> ();
 
     // Start is called before the first frame update
     void Awake()
@@ -64,9 +65,45 @@ public class PlayerController : NetworkBehaviour
             moveInput.x = Input.GetAxisRaw("Horizontal");
             moveInput.z = Input.GetAxisRaw("Vertical");
 
+        }
+
+        if (IsOwner)
+        {
+            if (_isDashing) 
+            {
+                UpdatePlayerStateServerRpc(PlayerState.DASHING);
+            }
+            else if (moveInput != Vector3.zero)
+            {
+                UpdatePlayerStateServerRpc(PlayerState.RUNNING);
+            }
+            else if(moveInput == Vector3.zero)
+            {
+                UpdatePlayerStateServerRpc(PlayerState.IDLE);
+            }
+        }
+        
+
+        // Handles Animations
+        if (networkPlayerState.Value == PlayerState.IDLE)
+        {
+            _anim.SetBool("IsRunning", false);
+            _anim.SetBool("IsDashing", false);
+
+        }
+        else if (networkPlayerState.Value == PlayerState.RUNNING)
+        {
+            _anim.SetBool("IsRunning", true);
+            _anim.SetBool("IsDashing", false);
+
+        }
+        if (networkPlayerState.Value == PlayerState.DASHING)
+        {
+            _anim.SetBool("IsDashing", true);
 
         }
 
+        // Look at
         if (Physics.Raycast(r, out RaycastHit hit))
         {
             if (hit.collider.gameObject != this.gameObject)
@@ -123,7 +160,17 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    public string GetPlayerName() { return playerName; }
+    [ServerRpc]
+    public void UpdatePlayerStateServerRpc(PlayerState state)
+    {
+        networkPlayerState.Value = state;
+    }
 
-    public void SetPlayerName(string name) { playerName = name; }
+    public enum PlayerState
+    {
+        IDLE = 0,
+        RUNNING,
+        DASHING,
+        DEAD
+    }
 }

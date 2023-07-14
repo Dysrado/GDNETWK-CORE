@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using Unity.Netcode;
-using UnityEngine.Animations;
+
 using System.Globalization;
 using UnityEngine.UIElements;
 
@@ -11,8 +11,8 @@ public class PlayerNetworkV2 : NetworkBehaviour
 {
     [SerializeField] private bool _serverAuth;
     [SerializeField] private float _cheapInterpolationTime = 0.1f;
-    [SerializeField] private SkinnedMeshRenderer mesh;
-    [SerializeField] Animator anim;
+    [SerializeField] private SkinnedMeshRenderer[] meshes;
+
     private readonly NetworkVariable<Color> NetColor = new();
     private readonly Color[] colors = { Color.red, Color.blue, Color.green, Color.yellow, Color.black, Color.white, Color.cyan, Color.gray };
     int index;
@@ -36,7 +36,12 @@ public class PlayerNetworkV2 : NetworkBehaviour
             this.enabled = false;
 
         index = (int)OwnerClientId;
-        mesh.material.color = colors[index % colors.Length];
+
+        foreach (SkinnedMeshRenderer mesh in meshes)
+        {
+            mesh.material.color = colors[index % colors.Length];
+        }
+        
     }
 
     // Update is called once per frame
@@ -46,14 +51,6 @@ public class PlayerNetworkV2 : NetworkBehaviour
         {
             TransmitState();
 
-            if (_rb.velocity == Vector3.zero)
-            {
-                anim.SetBool("IsRunning", false);
-            }
-            else
-            {
-                anim.SetBool("IsRunning", true);
-            }
         }
         else { 
             ConsumeState();
@@ -68,6 +65,8 @@ public class PlayerNetworkV2 : NetworkBehaviour
             Position = _rb.position,
             Rotation = transform.rotation.eulerAngles
         };
+
+
 
         if (IsServer || !_serverAuth)
             _playerState.Value = state;
