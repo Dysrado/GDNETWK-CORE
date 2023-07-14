@@ -163,7 +163,6 @@ MonoBehaviour:
   _dashDuration: 0.2
   _dashCooldown: 0.5
   DASH_MULTIPLIER: 2
-  anim: {fileID: 5624693007493617219}
 --- !u!114 &-8924433781102704555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +225,7 @@ MonoBehaviour:
   _serverAuth: 0
   _cheapInterpolationTime: 0.1
   mesh: {fileID: 5624693007489312899}
+  anim: {fileID: 5624693007493617219}
 --- !u!114 &4526655702516376821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +248,6 @@ MonoBehaviour:
   reloadSpeed: 1
   bulletLifetime: 0.6
   fireRate: 0.6
-  anim: {fileID: 5624693007493617219}
 --- !u!114 &3147291636996979635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +270,6 @@ MonoBehaviour:
   reloadSpeed: 0
   bulletLifetime: 0
   fireRate: 0
-  anim: {fileID: 5624693007493617219}
 --- !u!114 &1304664411715950416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +292,6 @@ MonoBehaviour:
   reloadSpeed: 0
   bulletLifetime: 0
   fireRate: 0
-  anim: {fileID: 5624693007493617219}
 --- !u!114 &9112355437476963323
 MonoBehaviour:
   m_ObjectHideFlags: 0

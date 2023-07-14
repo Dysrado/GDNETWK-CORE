@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using Unity.Netcode;
+using UnityEngine.Animations;
 using System.Globalization;
 using UnityEngine.UIElements;
 
@@ -11,12 +12,14 @@ public class PlayerNetworkV2 : NetworkBehaviour
     [SerializeField] private bool _serverAuth;
     [SerializeField] private float _cheapInterpolationTime = 0.1f;
     [SerializeField] private SkinnedMeshRenderer mesh;
+    [SerializeField] Animator anim;
     private readonly NetworkVariable<Color> NetColor = new();
     private readonly Color[] colors = { Color.red, Color.blue, Color.green, Color.yellow, Color.black, Color.white, Color.cyan, Color.gray };
     int index;
 
     private NetworkVariable<PlayerNetworkState> _playerState;
     private Rigidbody _rb;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -40,8 +43,21 @@ public class PlayerNetworkV2 : NetworkBehaviour
     void Update()
     {
         if (IsOwner)
+        {
             TransmitState();
-        else ConsumeState();
+
+            if (_rb.velocity == Vector3.zero)
+            {
+                anim.SetBool("IsRunning", false);
+            }
+            else
+            {
+                anim.SetBool("IsRunning", true);
+            }
+        }
+        else { 
+            ConsumeState();
+        }
     }
 
     #region Transmit State

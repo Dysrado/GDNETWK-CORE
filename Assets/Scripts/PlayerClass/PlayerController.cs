@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Animations;
+
 using Unity.Netcode;
 
 public class PlayerController : NetworkBehaviour
@@ -31,7 +31,7 @@ public class PlayerController : NetworkBehaviour
     bool _canDash = true; // Can the player dash
     bool _isDashing = false; // Is currently dashing
 
-    [SerializeField] Animator anim;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -64,14 +64,7 @@ public class PlayerController : NetworkBehaviour
             moveInput.x = Input.GetAxisRaw("Horizontal");
             moveInput.z = Input.GetAxisRaw("Vertical");
 
-            if (moveInput == Vector3.zero)
-            {
-                anim.SetBool("IsRunning", false);
-            }
-            else
-            {
-                anim.SetBool("IsRunning", true);
-            }
+
         }
 
         if (Physics.Raycast(r, out RaycastHit hit))
@@ -93,12 +86,10 @@ public class PlayerController : NetworkBehaviour
         if (!_isDashing)
         {
             rb.velocity = new Vector3(moveInput.x, 0, moveInput.z).normalized * speed * Time.deltaTime;
-            anim.SetBool("IsDashing", false);
         }
         else
         {
             rb.velocity = new Vector3(_dashDirection.x, 0, _dashDirection.z).normalized * _dashSpeed * Time.deltaTime;
-            anim.SetBool("IsDashing", true);
 
         }
     }
