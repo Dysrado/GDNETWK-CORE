@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bce385ab576f148b767fb11694f2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 100
+  currentHealth: 100
   magnum: {fileID: 0}
   smg: {fileID: 0}
   sniper: {fileID: 0}

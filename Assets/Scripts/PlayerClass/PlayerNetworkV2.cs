@@ -61,6 +61,11 @@ public class PlayerNetworkV2 : NetworkBehaviour
         
     }
 
+    public int GetNetworkID()
+    {
+        return (int)OwnerClientId;
+    }
+
     // Update is called once per frame
     void Update()
     {

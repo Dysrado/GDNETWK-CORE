@@ -15,9 +15,14 @@ public class BulletID : MonoBehaviour
     public void Initialize(int ID)
     {
         ownerId = ID;
-        Debug.Log("client id:" + ownerId);
+        //Debug.Log("client id:" + ownerId);
         GetComponent<MeshRenderer>().material.color = colors[ownerId % colors.Length];
 
+    }
+
+    public int GetOwnerId()
+    {
+        return ownerId;
     }
 
     // Update is called once per frame
