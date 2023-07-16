@@ -11,6 +11,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private SMG smg;
     [SerializeField] private Sniper sniper;
 
+    private WeaponClass activeWeapon;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +25,9 @@ public class PlayerManager : MonoBehaviour
         // Default Gun is Magnum
         smg.enabled = false;
         sniper.enabled = false;
-        magnum.enabled = true;    
+        magnum.enabled = true;
+
+        activeWeapon = (WeaponClass)magnum;
     }
 
     // Update is called once per frame
@@ -33,18 +39,24 @@ public class PlayerManager : MonoBehaviour
             smg.enabled = false;
             sniper.enabled = false;
             magnum.enabled = true;
+
+            activeWeapon = (WeaponClass)magnum;
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2)) // Equip SMG
         {
             magnum.enabled = false;
             sniper.enabled = false;
             smg.enabled = true;
+
+            activeWeapon = (WeaponClass)smg;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3)) // Equip Sniper
         {
             magnum.enabled = false;
             smg.enabled = false;
             sniper.enabled = true;
+
+            activeWeapon = (WeaponClass)sniper;
         }
     }
 
@@ -53,10 +65,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullets"))
         {
-            Debug.LogWarning("Collided with a bullet");
+            //Debug.LogWarning("Collided with a bullet");
 
             BulletID bulletId = collision.gameObject.GetComponent<BulletID>();
-            Debug.LogWarning($"Got Hit by {bulletId.GetOwnerId()}");
+            //Debug.LogWarning($"Got Hit by {bulletId.GetOwnerId()}");
 
 
             /*
@@ -78,6 +90,16 @@ public class PlayerManager : MonoBehaviour
             int ownerId = this.gameObject.GetComponent<PlayerNetworkV2>().GetNetworkID();
             GamaManager.Instance.Killed(ownerId, hitId);
         }
+    }
+
+    public int GetCurrentAmmo()
+    {
+        return activeWeapon.currentAmmo;
+    }
+
+    public int GetReserveAmmo()
+    {
+        return activeWeapon.reserveAmmo;
     }
 
     public int GetHealth()

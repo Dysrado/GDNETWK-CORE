@@ -1113,6 +1113,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676979142}
   m_CullTransparentMesh: 1
+--- !u!114 &710836567 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1309569839910666303, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
+  m_PrefabInstance: {fileID: 1544656242687563988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &753178992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,6 +3415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4669527367978000448, guid: ca5d7e73e440f9e4293f255646ec0474, type: 3}
+      propertyPath: ammoTxt
+      value: 
+      objectReference: {fileID: 710836567}
     - target: {fileID: 4669527367978000448, guid: ca5d7e73e440f9e4293f255646ec0474, type: 3}
       propertyPath: healthTxt
       value: 

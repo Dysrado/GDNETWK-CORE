@@ -12,7 +12,7 @@ public class GamaManager : MonoBehaviour
 
     private PlayerManager playerOwner;
     private bool ownerPresent = false;
-    private float timer = 0.5f;
+    private float timer = 0.1f;
     private float timeElapse = 10.0f;
 
 
@@ -81,7 +81,7 @@ public class GamaManager : MonoBehaviour
         if (ownerPresent)
         {
             healthTxt.text = playerOwner.GetHealth().ToString();
-            // ammoTxt.text = 
+            ammoTxt.text = $"{playerOwner.GetCurrentAmmo()} | {playerOwner.GetReserveAmmo()}";
         }
 
     }
