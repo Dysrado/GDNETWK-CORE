@@ -32,4 +32,10 @@ public class NameTagBehaviour : MonoBehaviour
         
 
     }
+
+    public string GetName()
+    {
+        return username.text;
+    }
+   
 }

@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Magnum magnum;
     [SerializeField] private SMG smg;
     [SerializeField] private Sniper sniper;
+    [SerializeField] private string username;
+    [SerializeField] private int playerID;
 
     private WeaponClass activeWeapon;
 
@@ -105,5 +107,28 @@ public class PlayerManager : MonoBehaviour
     public int GetHealth()
     {
         return currentHealth;
+    }
+
+    public int GetPlayerID()
+    {
+        return playerID;
+    }
+
+    public string GetPlayerUsername()
+    {
+        return username;
+    }
+
+    public void SetInfo(int playerId)
+    {
+        this.playerID = playerId;
+        
+    }
+
+    public void SetUserName(string playerUsername)
+    {
+        this.username = playerUsername;
+
+        Debug.LogError(playerUsername);
     }
 }

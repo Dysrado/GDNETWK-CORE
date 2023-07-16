@@ -54,6 +54,10 @@ public class PlayerNetworkV2 : NetworkBehaviour
 
         index = (int)OwnerClientId;
 
+        //Added Change
+        this.gameObject.GetComponent<PlayerManager>().SetInfo(index);
+
+
         foreach (SkinnedMeshRenderer mesh in meshes)
         {
             mesh.material.color = colors[index % colors.Length];
@@ -106,6 +110,9 @@ public class PlayerNetworkV2 : NetworkBehaviour
     private void SetUsernameServerRpc(NetworkString pname)
     {
         username.Value = pname;
+
+        //Added changes
+        this.gameObject.GetComponent<PlayerManager>().SetUserName(pname);
     }
 
 

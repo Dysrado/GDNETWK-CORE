@@ -15,6 +15,8 @@ public class GamaManager : MonoBehaviour
     private float timer = 0.1f;
     private float timeElapse = 10.0f;
 
+    private Dictionary<int, PlayerManager> playerInfo;
+
 
     public static GamaManager Instance { get; private set; }
     private void Awake()
@@ -36,7 +38,7 @@ public class GamaManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        playerInfo = new Dictionary<int, PlayerManager>();
     }
 
     // Update is called once per frame
@@ -56,7 +58,7 @@ public class GamaManager : MonoBehaviour
 
     public void Killed(int ownerId, int killedId)
     {
-        Debug.Log($"Player: {ownerId} was killed by {killedId}");
+        Debug.Log($"Player: {playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
     }
 
     private void CheckPlayerList()
@@ -71,6 +73,18 @@ public class GamaManager : MonoBehaviour
             {
                 playerOwner = player.GetComponent<PlayerManager>();
                 ownerPresent = true;
+            }
+        }
+
+        if (ownerPresent)
+        {
+
+            foreach (GameObject player in players)
+            {
+                PlayerManager copy = player.GetComponent<PlayerManager>();
+                playerInfo.TryAdd(copy.GetPlayerID(), copy);
+
+
             }
         }
 
