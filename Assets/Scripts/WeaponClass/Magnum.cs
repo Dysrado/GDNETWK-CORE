@@ -17,6 +17,7 @@ public class Magnum : WeaponClass
         clipSize = 6;
         fireRate = 0.6f;
         currentAmmo = clipSize;
+        name = "Magnum";
     }
 
     // Update is called once per frame

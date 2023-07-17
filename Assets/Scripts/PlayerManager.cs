@@ -94,6 +94,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    /*Weapon Section*/
+
     public int GetCurrentAmmo()
     {
         return activeWeapon.currentAmmo;
@@ -104,6 +106,12 @@ public class PlayerManager : MonoBehaviour
         return activeWeapon.reserveAmmo;
     }
 
+    public string GetWeaponName()
+    {
+        return activeWeapon.name;
+    }
+
+    /*CharacterSection*/
     public int GetHealth()
     {
         return currentHealth;

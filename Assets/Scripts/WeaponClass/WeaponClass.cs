@@ -25,6 +25,9 @@ public class WeaponClass : NetworkBehaviour
     public float bulletLifetime;
     public float fireRate;
 
+    /*Additional Paramters for the Weapon Class - Kevin*/
+    public string name;
+
     // Start is called before the first frame update
     void Start()
     {

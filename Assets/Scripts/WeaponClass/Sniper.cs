@@ -17,6 +17,7 @@ public class Sniper : WeaponClass
         clipSize = 5;
         fireRate = 1.4f;
         currentAmmo = clipSize;
+        name = "Sniper";
     }
 
     // Update is called once per frame

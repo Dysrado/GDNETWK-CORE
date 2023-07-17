@@ -10,6 +10,12 @@ public class GamaManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerTxt;
     [SerializeField] private TextMeshProUGUI ammoTxt;
 
+    [Header("AnnnouncementSection")]
+    [SerializeField] private GameObject announcementHolder;
+    [SerializeField] private GameObject prefabAnnouncement;
+
+
+
     private PlayerManager playerOwner;
     private bool ownerPresent = false;
     private float timer = 0.1f;
@@ -59,6 +65,10 @@ public class GamaManager : MonoBehaviour
     public void Killed(int ownerId, int killedId)
     {
         Debug.Log($"Player: {playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
+        GameObject killAnnouncement = prefabAnnouncement;
+        Instantiate(killAnnouncement, announcementHolder.transform);
+
+        killAnnouncement.GetComponent<KillAnnouncementBehaviour>().InsertText($"Player: {playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
     }
 
     private void CheckPlayerList()
@@ -78,13 +88,10 @@ public class GamaManager : MonoBehaviour
 
         if (ownerPresent)
         {
-
             foreach (GameObject player in players)
             {
                 PlayerManager copy = player.GetComponent<PlayerManager>();
-                playerInfo.TryAdd(copy.GetPlayerID(), copy);
-
-
+                playerInfo.TryAdd(copy.GetPlayerID(), copy);    
             }
         }
 
@@ -95,7 +102,7 @@ public class GamaManager : MonoBehaviour
         if (ownerPresent)
         {
             healthTxt.text = playerOwner.GetHealth().ToString();
-            ammoTxt.text = $"{playerOwner.GetCurrentAmmo()} | {playerOwner.GetReserveAmmo()}";
+            ammoTxt.text = $" {playerOwner.GetWeaponName()} <br> {playerOwner.GetCurrentAmmo()} | {playerOwner.GetReserveAmmo()}";
         }
 
     }

@@ -17,6 +17,7 @@ public class SMG : WeaponClass
         clipSize = 15;
         fireRate = 0.2f;
         currentAmmo = clipSize;
+        name = "SMG";
     }
 
     // Update is called once per frame
