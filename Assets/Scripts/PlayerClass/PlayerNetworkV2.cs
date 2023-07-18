@@ -55,7 +55,7 @@ public class PlayerNetworkV2 : NetworkBehaviour
         index = (int)OwnerClientId;
 
         //Added Change
-        this.gameObject.GetComponent<PlayerManager>().SetInfo(index);
+        this.gameObject.GetComponent<PlayerManager>().SetInfo(index, nameTag.GetComponent<NameTagBehaviour>());
 
 
         foreach (SkinnedMeshRenderer mesh in meshes)
@@ -111,8 +111,8 @@ public class PlayerNetworkV2 : NetworkBehaviour
     {
         username.Value = pname;
 
-        //Added changes
-        this.gameObject.GetComponent<PlayerManager>().SetUserName(pname);
+        //Added changes = only works at the HOST not on the client
+        //this.gameObject.GetComponent<PlayerManager>().SetUserName(pname);
     }
 
 

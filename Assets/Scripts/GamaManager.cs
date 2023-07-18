@@ -9,12 +9,13 @@ public class GamaManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthTxt;
     [SerializeField] private TextMeshProUGUI timerTxt;
     [SerializeField] private TextMeshProUGUI ammoTxt;
+     
 
     [Header("AnnnouncementSection")]
     [SerializeField] private GameObject announcementHolder;
     [SerializeField] private GameObject prefabAnnouncement;
 
-
+    //Change it into struct
 
     private PlayerManager playerOwner;
     private bool ownerPresent = false;

@@ -10,11 +10,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Magnum magnum;
     [SerializeField] private SMG smg;
     [SerializeField] private Sniper sniper;
-    [SerializeField] private string username;
+
+    //[SerializeField] private string username;
     [SerializeField] private int playerID;
 
     private WeaponClass activeWeapon;
-
+    private NameTagBehaviour nameTag;
 
 
     // Start is called before the first frame update
@@ -124,19 +125,20 @@ public class PlayerManager : MonoBehaviour
 
     public string GetPlayerUsername()
     {
-        return username;
+        return nameTag.GetName();
     }
 
-    public void SetInfo(int playerId)
+    public void SetInfo(int playerId, NameTagBehaviour nameTag)
     {
         this.playerID = playerId;
+        this.nameTag = nameTag;
         
     }
 
-    public void SetUserName(string playerUsername)
-    {
-        this.username = playerUsername;
+    //public void SetUserName(string playerUsername)
+    //{
+    //    this.username = playerUsername;
 
-        Debug.LogError(playerUsername);
-    }
+    //    Debug.LogError(playerUsername);
+    //}
 }
