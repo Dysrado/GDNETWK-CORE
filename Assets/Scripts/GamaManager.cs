@@ -9,7 +9,10 @@ public class GamaManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthTxt;
     [SerializeField] private TextMeshProUGUI timerTxt;
     [SerializeField] private TextMeshProUGUI ammoTxt;
-     
+    [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private GameObject startBtn;
+
+
 
     [Header("AnnnouncementSection")]
     [SerializeField] private GameObject announcementHolder;
@@ -18,7 +21,26 @@ public class GamaManager : MonoBehaviour
     //Change it into struct
 
     private PlayerManager playerOwner;
+    [Header("Game Parameters")]
+    [SerializeField] private int levelUpRequirement;
+    [SerializeField] private int maxScore;
+    [SerializeField] private int maxGameDuration;
+    private float elapsedGameTime = 0;
+
+    //Goals
+    /*Start the round
+     *  Check for Condition and only host would start the round
+     * End Round
+      */
+
+    /*Hidden Parameters*/
     private bool ownerPresent = false;
+    private bool isHost = false;
+    private bool hasStarted = false;
+
+    
+
+    //Internal Clock
     private float timer = 0.1f;
     private float timeElapse = 10.0f;
 
@@ -57,42 +79,115 @@ public class GamaManager : MonoBehaviour
             CheckPlayerList();
             UpdateStats();
             timeElapse = 0.0f;
+
+            if (elapsedGameTime > maxGameDuration && hasStarted)
+            {
+                //Call a function to call the end game;
+                EndGame();
+            }
+
+            else
+            {
+                CheckHost();
+            }
+          
+        }
+        if (hasStarted)
+        {
+            elapsedGameTime += Time.deltaTime;
         }
 
         timeElapse += Time.deltaTime;
         
     }
 
-    public void Killed(int ownerId, int killedId)
+    //Internal Checking
+    private void CheckHost()
     {
-        Debug.Log($"Player: {playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
-        GameObject killAnnouncement = prefabAnnouncement;
-        Instantiate(killAnnouncement, announcementHolder.transform);
+        if (ownerPresent)
+        {
+            //Under normal circumstances
+            if (playerOwner.GetPlayerID() == 0)
+                isHost = true;
 
-        killAnnouncement.GetComponent<KillAnnouncementBehaviour>().InsertText($"Player: {playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
+            if (isHost && !hasStarted)
+            {
+                //Enable the start button
+                GameObject[] players;
+                players = GameObject.FindGameObjectsWithTag("Player");
+
+                PreGameCheck(players.Length);
+
+            }
+        }
+       
     }
 
+    public void StartGame()
+    {
+        hasStarted = true;
+        this.startBtn.SetActive(false);
+    }
+
+    public void EndGame()
+    {
+        hasStarted = false;
+        elapsedGameTime = 0.0f;
+    }
+
+
+
+    //Core Gameplay mechanics
+    public void Killed(int ownerId, int killedId)
+    {
+        Debug.Log($"{playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
+        GameObject killAnnouncement = prefabAnnouncement;
+        Instantiate(killAnnouncement, announcementHolder.transform);
+        killAnnouncement.GetComponent<KillAnnouncementBehaviour>().InsertText($"Player: {playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
+
+        UpdateScore(killedId);
+    }
+
+    public void UpdateScore(int killerId)
+    {
+        playerInfo[killerId].OnKill();
+        //Ill change this after at some point
+        playerInfo[killerId].UpgradeWeapon(levelUpRequirement);
+
+        if(playerInfo[killerId].GetScore() >= maxScore)
+        {
+            EndGame();
+            Debug.LogError("You win bro");
+        }
+    }
+
+    
+    //Player Updates Section
     private void CheckPlayerList()
     {
         GameObject[] players;
         players = GameObject.FindGameObjectsWithTag("Player");
 
-
-        foreach (GameObject player in players)
-        {
-            if (player.GetComponent<PlayerNetworkV2>().isActiveAndEnabled)
-            {
-                playerOwner = player.GetComponent<PlayerManager>();
-                ownerPresent = true;
-            }
-        }
-
+        
         if (ownerPresent)
         {
             foreach (GameObject player in players)
             {
                 PlayerManager copy = player.GetComponent<PlayerManager>();
                 playerInfo.TryAdd(copy.GetPlayerID(), copy);    
+            }
+        }
+
+
+        else
+        {
+            foreach (GameObject player in players)
+            {
+                if (player.GetComponent<PlayerNetworkV2>().isActiveAndEnabled)
+                {
+                    playerOwner = player.GetComponent<PlayerManager>();
+                    ownerPresent = true;
+                }
             }
         }
 
@@ -104,8 +199,36 @@ public class GamaManager : MonoBehaviour
         {
             healthTxt.text = playerOwner.GetHealth().ToString();
             ammoTxt.text = $" {playerOwner.GetWeaponName()} <br> {playerOwner.GetCurrentAmmo()} | {playerOwner.GetReserveAmmo()}";
+            scoreTxt.text = $"Kill Count: {playerOwner.GetScore()}";
         }
 
+        if (hasStarted)
+        {
+            timerTxt.text = $"{(int)(maxGameDuration - elapsedGameTime)}s";
+        }
+
+    }
+
+    private void ClearGameStats()
+    {
+        GameObject[] players;
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<PlayerManager>().ResetStats();
+        }
+
+    }
+
+    private void PreGameCheck(int playerSize)
+    {
+        
+        if(playerSize > 1 && isHost && !hasStarted)
+        {
+            //Insert Fucntion to enable the start button
+            startBtn.SetActive(true);
+        }
     }
 
 }

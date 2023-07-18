@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
+    
     [SerializeField] private Magnum magnum;
     [SerializeField] private SMG smg;
     [SerializeField] private Sniper sniper;
 
     //[SerializeField] private string username;
+
+    [Header("Player Information")]
     [SerializeField] private int playerID;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private int killCount;
+    [SerializeField] private int score;
 
     private WeaponClass activeWeapon;
     private NameTagBehaviour nameTag;
@@ -31,36 +36,40 @@ public class PlayerManager : MonoBehaviour
         magnum.enabled = true;
 
         activeWeapon = (WeaponClass)magnum;
+
+        //Default Stats
+        score = 0;
+        killCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Switch Weapons 
-        if(Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
-        {
-            smg.enabled = false;
-            sniper.enabled = false;
-            magnum.enabled = true;
+        //// Switch Weapons 
+        //if(Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
+        //{
+        //    smg.enabled = false;
+        //    sniper.enabled = false;
+        //    magnum.enabled = true;
 
-            activeWeapon = (WeaponClass)magnum;
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha2)) // Equip SMG
-        {
-            magnum.enabled = false;
-            sniper.enabled = false;
-            smg.enabled = true;
+        //    activeWeapon = (WeaponClass)magnum;
+        //}
+        //else if(Input.GetKeyDown(KeyCode.Alpha2)) // Equip SMG
+        //{
+        //    magnum.enabled = false;
+        //    sniper.enabled = false;
+        //    smg.enabled = true;
 
-            activeWeapon = (WeaponClass)smg;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) // Equip Sniper
-        {
-            magnum.enabled = false;
-            smg.enabled = false;
-            sniper.enabled = true;
+        //    activeWeapon = (WeaponClass)smg;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha3)) // Equip Sniper
+        //{
+        //    magnum.enabled = false;
+        //    smg.enabled = false;
+        //    sniper.enabled = true;
 
-            activeWeapon = (WeaponClass)sniper;
-        }
+        //    activeWeapon = (WeaponClass)sniper;
+        //}
     }
 
     //Bullet Detection
@@ -79,7 +88,7 @@ public class PlayerManager : MonoBehaviour
              *  1) Add parameters/component to the bullet for much damage can it take.
              */
 
-            CheckHealth(bulletId.GetOwnerId(), 5);
+            CheckHealth(bulletId.GetOwnerId(),50);
         }
         
     }
@@ -94,6 +103,64 @@ public class PlayerManager : MonoBehaviour
             GamaManager.Instance.Killed(ownerId, hitId);
         }
     }
+
+    public void ResetStats()
+    {
+        //TODO: Refresh the total amount of bullet or reload scene
+
+
+        //Base Stats
+        score = 0;
+        currentHealth = maxHealth;
+    }
+
+    /* Weapon Upgrade */
+
+    public void UpgradeWeapon(int killrequireMents)
+    {
+        int tier = this.score / killrequireMents;
+        switch (tier)
+        {
+            case 0:
+                smg.enabled = false;
+                sniper.enabled = false;
+                magnum.enabled = true;
+
+                activeWeapon = (WeaponClass)magnum;
+                break;
+
+            case 1:
+               
+                magnum.enabled = false;
+                sniper.enabled = false;
+                smg.enabled = true;
+
+                activeWeapon = (WeaponClass)smg;
+                break;
+
+            case 2:
+                magnum.enabled = false;
+                smg.enabled = false;
+                sniper.enabled = true;
+
+                activeWeapon = (WeaponClass)sniper;
+                break;
+        }
+    }
+
+
+    public void OnKill()
+    {
+        killCount++;
+        score++;
+    }
+
+    /*Extra Function - for meelee kill*/
+    public void OnMeeleDeath()
+    {
+
+    }
+
 
     /*Weapon Section*/
 
@@ -127,7 +194,11 @@ public class PlayerManager : MonoBehaviour
     {
         return nameTag.GetName();
     }
-
+    
+    public int GetScore()
+    {
+        return this.score;
+    }
     public void SetInfo(int playerId, NameTagBehaviour nameTag)
     {
         this.playerID = playerId;
@@ -135,10 +206,5 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    //public void SetUserName(string playerUsername)
-    //{
-    //    this.username = playerUsername;
-
-    //    Debug.LogError(playerUsername);
-    //}
+    
 }
