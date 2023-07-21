@@ -24,6 +24,7 @@ public class WeaponClass : NetworkBehaviour
     public float reloadSpeed;
     public float bulletLifetime;
     public float fireRate;
+    public int damage; // assuming 100 Max Hp
 
     /*Additional Paramters for the Weapon Class - Kevin*/
     public string name;

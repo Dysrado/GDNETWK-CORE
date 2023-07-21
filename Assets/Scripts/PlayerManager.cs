@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Magnum magnum;
     [SerializeField] private SMG smg;
     [SerializeField] private Sniper sniper;
+    [SerializeField] private Rifle rifle;
+    [SerializeField] private Shotgun shotgun;
 
     //[SerializeField] private string username;
 
@@ -29,8 +31,12 @@ public class PlayerManager : MonoBehaviour
         magnum = GetComponent<Magnum>();
         smg = GetComponent<SMG>();
         sniper = GetComponent<Sniper>();
+        rifle = GetComponent<Rifle>();
+        shotgun = GetComponent<Shotgun>();
 
         // Default Gun is Magnum
+        rifle.enabled = false;
+        shotgun.enabled = false;
         smg.enabled = false;
         sniper.enabled = false;
         magnum.enabled = true;
@@ -46,16 +52,20 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         //// Switch Weapons 
-        //if(Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
+        //if (Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
         //{
+        //    shotgun.enabled = false;
+        //    rifle.enabled = false;
         //    smg.enabled = false;
         //    sniper.enabled = false;
         //    magnum.enabled = true;
 
         //    activeWeapon = (WeaponClass)magnum;
         //}
-        //else if(Input.GetKeyDown(KeyCode.Alpha2)) // Equip SMG
+        //else if (Input.GetKeyDown(KeyCode.Alpha2)) // Equip SMG
         //{
+        //    shotgun.enabled = false;
+        //    rifle.enabled = false;
         //    magnum.enabled = false;
         //    sniper.enabled = false;
         //    smg.enabled = true;
@@ -64,11 +74,33 @@ public class PlayerManager : MonoBehaviour
         //}
         //else if (Input.GetKeyDown(KeyCode.Alpha3)) // Equip Sniper
         //{
+        //    shotgun.enabled = false;
+        //    rifle.enabled = false;
         //    magnum.enabled = false;
         //    smg.enabled = false;
         //    sniper.enabled = true;
 
         //    activeWeapon = (WeaponClass)sniper;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha4)) // Equip Rifle
+        //{
+        //    shotgun.enabled = false;
+        //    magnum.enabled = false;
+        //    smg.enabled = false;
+        //    sniper.enabled = false;
+        //    rifle.enabled = true;
+
+        //    activeWeapon = (WeaponClass)rifle;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha5)) // Equip Shotgun
+        //{
+        //    magnum.enabled = false;
+        //    smg.enabled = false;
+        //    sniper.enabled = false;
+        //    rifle.enabled = false;
+        //    shotgun.enabled = true;
+
+        //    activeWeapon = (WeaponClass)shotgun;
         //}
     }
 
@@ -122,6 +154,8 @@ public class PlayerManager : MonoBehaviour
         switch (tier)
         {
             case 0:
+                shotgun.enabled = false;
+                rifle.enabled = false;
                 smg.enabled = false;
                 sniper.enabled = false;
                 magnum.enabled = true;
@@ -130,7 +164,8 @@ public class PlayerManager : MonoBehaviour
                 break;
 
             case 1:
-               
+                shotgun.enabled = false;
+                rifle.enabled = false;
                 magnum.enabled = false;
                 sniper.enabled = false;
                 smg.enabled = true;
@@ -139,11 +174,31 @@ public class PlayerManager : MonoBehaviour
                 break;
 
             case 2:
+                shotgun.enabled = false;
+                rifle.enabled = false;
                 magnum.enabled = false;
                 smg.enabled = false;
                 sniper.enabled = true;
 
                 activeWeapon = (WeaponClass)sniper;
+                break;
+            case 3:
+                shotgun.enabled = false;
+                magnum.enabled = false;
+                smg.enabled = false;
+                sniper.enabled = false;
+                rifle.enabled = true;
+
+                activeWeapon = (WeaponClass)rifle;
+                break;
+            case 4:
+                magnum.enabled = false;
+                smg.enabled = false;
+                sniper.enabled = false;
+                rifle.enabled = false;
+                shotgun.enabled = true;
+
+                activeWeapon = (WeaponClass)shotgun;
                 break;
         }
     }

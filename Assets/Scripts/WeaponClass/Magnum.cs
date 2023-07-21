@@ -10,6 +10,7 @@ public class Magnum : WeaponClass
     // Start is called before the first frame update
     void Awake()
     {
+        damage = 35; // 3 Shots to Kill
         projectileSpeed = 18.0f;
         reloadSpeed = 1.0f;
         bulletLifetime = 1.6f;

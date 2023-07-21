@@ -4,21 +4,21 @@ using UnityEngine;
 using Unity.Netcode;
 
 
-public class Sniper : WeaponClass
+public class Rifle : WeaponClass
 {
 
     // Start is called before the first frame update
     void Awake()
     {
-        damage = 100; // 1 Shot to Kill
-        projectileSpeed = 35.0f;
-        reloadSpeed = 3.0f;
-        bulletLifetime = 3.0f;
-        reserveAmmo = 10;
-        clipSize = 5;
-        fireRate = 1.6f;
+        damage = 25; // 4 Shots to Kill
+        projectileSpeed = 20.0f;
+        reloadSpeed = 2.0f;
+        bulletLifetime = 2.0f;
+        reserveAmmo = 120;
+        clipSize = 12;
+        fireRate = 0.4f;
         currentAmmo = clipSize;
-        name = "Sniper";
+        name = "Rifle";
     }
 
     // Update is called once per frame

@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4526655702516376821}
   - component: {fileID: 3147291636996979635}
   - component: {fileID: 1304664411715950416}
+  - component: {fileID: 2074133789611412930}
+  - component: {fileID: 8393372362584535600}
   - component: {fileID: 9112355437476963323}
   m_Layer: 3
   m_Name: Player
@@ -208,11 +210,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bce385ab576f148b767fb11694f2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
   magnum: {fileID: 0}
   smg: {fileID: 0}
   sniper: {fileID: 0}
+  rifle: {fileID: 0}
+  shotgun: {fileID: 0}
+  playerID: 0
+  maxHealth: 100
+  currentHealth: 100
+  killCount: 0
+  score: 0
 --- !u!114 &6065288973132787067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +263,8 @@ MonoBehaviour:
   reloadSpeed: 1
   bulletLifetime: 0.6
   fireRate: 0.6
+  damage: 0
+  name: 
 --- !u!114 &3147291636996979635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +287,8 @@ MonoBehaviour:
   reloadSpeed: 0
   bulletLifetime: 0
   fireRate: 0
+  damage: 0
+  name: 
 --- !u!114 &1304664411715950416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +311,56 @@ MonoBehaviour:
   reloadSpeed: 0
   bulletLifetime: 0
   fireRate: 0
+  damage: 0
+  name: 
+--- !u!114 &2074133789611412930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500183327185611300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f06c44e1007c5c547b9b6ba034bf9ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName: Rifle
+  bulletPrefab: {fileID: 7905095308143297095, guid: d12f91d6be552474588a33827fc49162, type: 3}
+  spawnOffset: 1
+  projectileSpeed: 0
+  clipSize: 0
+  reserveAmmo: 0
+  currentAmmo: 0
+  reloadSpeed: 0
+  bulletLifetime: 0
+  fireRate: 0
+  damage: 0
+  name: 
+--- !u!114 &8393372362584535600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500183327185611300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3865d1d32bc8fa4aafcc25a15b3497b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName: Shotgun
+  bulletPrefab: {fileID: 7905095308143297095, guid: d12f91d6be552474588a33827fc49162, type: 3}
+  spawnOffset: 1
+  projectileSpeed: 0
+  clipSize: 0
+  reserveAmmo: 0
+  currentAmmo: 0
+  reloadSpeed: 0
+  bulletLifetime: 0
+  fireRate: 0
+  damage: 0
+  name: 
 --- !u!114 &9112355437476963323
 MonoBehaviour:
   m_ObjectHideFlags: 0
