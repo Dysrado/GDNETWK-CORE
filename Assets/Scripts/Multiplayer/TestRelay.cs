@@ -15,22 +15,22 @@ using System;
 public class TestRelay : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    [SerializeField] GameObject MainLobbyUI;
     public static TestRelay Instance { get; private set; }
 
     private void Awake()
     {
         Instance = this;
     }
-    private async void Start()
+    private  void Start()
     {
-        await UnityServices.InitializeAsync();
+        //await UnityServices.InitializeAsync();
 
-        AuthenticationService.Instance.SignedIn += () => {
-            Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
-        };
+        //AuthenticationService.Instance.SignedIn += () => {
+        //    Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
+        //};
 
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        //await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
     public async Task<string> CreateRelay()
     {
@@ -54,7 +54,7 @@ public class TestRelay : MonoBehaviour
     {
         try
         {
-
+            MainLobbyUI.SetActive(false);
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
 

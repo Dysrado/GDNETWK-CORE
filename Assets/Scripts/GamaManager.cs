@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.Netcode;
 
 public class GamaManager : MonoBehaviour
 {
@@ -73,8 +74,10 @@ public class GamaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         //For every x-seconds check the number of players active in the server
-        if(timer < timeElapse)
+        if (timer < timeElapse)
         {
             CheckPlayerList();
             UpdateStats();
@@ -126,7 +129,7 @@ public class GamaManager : MonoBehaviour
     public void StartGame()
     {
         hasStarted = true;
-        this.startBtn.SetActive(false);
+        //this.startBtn.SetActive(false);
     }
 
     public void EndGame()
@@ -227,7 +230,7 @@ public class GamaManager : MonoBehaviour
         if(playerSize > 1 && isHost && !hasStarted)
         {
             //Insert Fucntion to enable the start button
-            startBtn.SetActive(true);
+            //startBtn.SetActive(true);
         }
     }
 
