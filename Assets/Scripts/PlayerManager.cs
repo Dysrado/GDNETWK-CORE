@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     private NameTagBehaviour nameTag;
 
     // Respawn Variables
-    public GameObject respawnPoint;
+    public GameObject respawnPoint = null;
 
 
     // Start is called before the first frame update
@@ -49,34 +49,41 @@ public class PlayerManager : MonoBehaviour
         //Default Stats
         score = 0;
         killCount = 0;
-
-        // Set Respawn Points
-        GameObject[] respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
-        if (playerID == 0)
-        {
-            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[0];
-        }
-        else if (playerID == 1)
-        {
-            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[1];
-        }
-        else if (playerID == 2)
-        {
-            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[2];
-        }
-        else if (playerID == 3)
-        {
-            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[3];
-        }
-        else
-        {
-            Debug.Log("5 / 4 Players, Not Enough Spawn Points.");
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Set Respawn Points
+        if(respawnPoint == null)
+        {
+            GameObject[] respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
+            if (playerID == 0)
+            {
+                respawnPoint = respawnPoints[0];
+            }
+            else if (playerID == 1)
+            {
+                respawnPoint = respawnPoints[1];
+            }
+            else if (playerID == 2)
+            {
+                respawnPoint = respawnPoints[2];
+            }
+            else if (playerID == 3)
+            {
+                respawnPoint = respawnPoints[3];
+            }
+            else
+            {
+                Debug.Log("5 / 4 Players, Not Enough Spawn Points.");
+            }
+        }
+        else
+        {
+            Debug.Log("Has Spawn Point");
+        }
+        
         // Switch Weapons 
         if (Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
         {
