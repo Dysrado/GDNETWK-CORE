@@ -28,6 +28,7 @@ public class TestLobby : MonoBehaviour
     [SerializeField] GameObject LobbyUI;
     [SerializeField] GameObject MainLobbyUI;
     [SerializeField] GameObject StartButton;
+    [SerializeField] GameObject GameMap;
    
 
 
@@ -328,6 +329,8 @@ public class TestLobby : MonoBehaviour
                 });
                 GamaManager.Instance.StartGame();
                 MainLobbyUI.SetActive(false);
+                GameMap.SetActive(true);
+
             }
 
             catch (LobbyServiceException e)

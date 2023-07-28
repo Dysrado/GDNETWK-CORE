@@ -16,6 +16,7 @@ public class TestRelay : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject MainLobbyUI;
+    [SerializeField] GameObject GameMap;
     public static TestRelay Instance { get; private set; }
 
     private void Awake()
@@ -61,7 +62,8 @@ public class TestRelay : MonoBehaviour
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "udp");
 
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-            NetworkManager.Singleton.StartClient(); 
+            NetworkManager.Singleton.StartClient();
+            GameMap.SetActive(true);
 
         } catch(RelayServiceException e) { 
             Debug.Log(e); }
