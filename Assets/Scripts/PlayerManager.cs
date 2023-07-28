@@ -49,6 +49,29 @@ public class PlayerManager : MonoBehaviour
         //Default Stats
         score = 0;
         killCount = 0;
+
+        // Set Respawn Points
+        GameObject[] respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
+        if (playerID == 0)
+        {
+            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[0];
+        }
+        else if (playerID == 1)
+        {
+            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[1];
+        }
+        else if (playerID == 2)
+        {
+            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[2];
+        }
+        else if (playerID == 3)
+        {
+            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[3];
+        }
+        else
+        {
+            Debug.Log("5 / 4 Players, Not Enough Spawn Points.");
+        }
     }
 
     // Update is called once per frame
