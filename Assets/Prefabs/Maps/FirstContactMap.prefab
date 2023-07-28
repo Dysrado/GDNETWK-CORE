@@ -1,5 +1,164 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1518346776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1518346777}
+  m_Layer: 0
+  m_Name: RP (1)
+  m_TagString: RespawnPoint
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1518346777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518346776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.47, y: 6.78, z: 17.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1769031602}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1576612987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576612988}
+  m_Layer: 0
+  m_Name: RP
+  m_TagString: RespawnPoint
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1576612988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576612987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.11, y: 6.78, z: -17.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1769031602}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1769031601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769031602}
+  m_Layer: 0
+  m_Name: RespawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1769031602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769031601}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1576612988}
+  - {fileID: 1518346777}
+  - {fileID: 1911262178}
+  - {fileID: 2052709538}
+  m_Father: {fileID: 1669304915234914779}
+  m_RootOrder: 72
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1911262177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1911262178}
+  m_Layer: 0
+  m_Name: RP (2)
+  m_TagString: RespawnPoint
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1911262178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911262177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.29, y: 6.78, z: 21.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1769031602}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2052709537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2052709538}
+  m_Layer: 0
+  m_Name: RP (3)
+  m_TagString: RespawnPoint
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2052709538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052709537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.691, y: 6.78, z: -17.039}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1769031602}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1669304913722194544
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +357,7 @@ Transform:
   - {fileID: 1198017445192571203}
   - {fileID: 1198017444783160950}
   - {fileID: 1198017445234703065}
+  - {fileID: 1769031602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -255,6 +415,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -335,6 +499,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -424,6 +592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Crossroads_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
 --- !u!4 &1198017445550425430 stripped
@@ -494,6 +666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Crossroads_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
 --- !u!4 &1198017445517894978 stripped
@@ -555,6 +731,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -652,6 +832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car_3_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4122504736164611588, guid: 9dce1e39a16300c449250e82a5c0de0e, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dce1e39a16300c449250e82a5c0de0e, type: 3}
 --- !u!4 &2690702187284978403 stripped
@@ -731,6 +915,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -820,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4fa9acce64c8e88458251a01dcab76bb, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fa9acce64c8e88458251a01dcab76bb, type: 3}
 --- !u!4 &1198017445329662981 stripped
@@ -855,6 +1047,10 @@ PrefabInstance:
     - target: {fileID: 6053085787823158449, guid: abaf13a763c700b4c9759cfe2b3ede0a, type: 3}
       propertyPath: m_Name
       value: Hot_Dog
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053085787823158449, guid: abaf13a763c700b4c9759cfe2b3ede0a, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 6866636862930972171, guid: abaf13a763c700b4c9759cfe2b3ede0a, type: 3}
       propertyPath: m_RootOrder
@@ -992,6 +1188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_2 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
 --- !u!4 &520119057846097846 stripped
@@ -1071,6 +1271,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -1152,6 +1356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811846797074725 stripped
@@ -1222,6 +1430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Crossroads_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
 --- !u!4 &1198017445234703065 stripped
@@ -1283,6 +1495,10 @@ PrefabInstance:
     - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
       propertyPath: m_Name
       value: Road_Barrier (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
@@ -1380,6 +1596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aabd863a439f18e479ea3b1081f1b6ab, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aabd863a439f18e479ea3b1081f1b6ab, type: 3}
 --- !u!4 &1198017445192571203 stripped
@@ -1468,6 +1688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Crossroads_2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
 --- !u!4 &1198017445144202485 stripped
@@ -1529,6 +1753,10 @@ PrefabInstance:
     - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
       propertyPath: m_Name
       value: Road_Barrier (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
@@ -1610,6 +1838,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811847772905863 stripped
@@ -1683,6 +1915,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aab2be6a574600b479bbe0b31f2b80df, type: 3}
       propertyPath: m_Name
       value: Building_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aab2be6a574600b479bbe0b31f2b80df, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aab2be6a574600b479bbe0b31f2b80df, type: 3}
@@ -1772,6 +2008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
 --- !u!4 &1198017445123326580 stripped
@@ -1842,6 +2082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
 --- !u!4 &1198017445087817341 stripped
@@ -1903,6 +2147,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -1983,6 +2231,10 @@ PrefabInstance:
     - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
       propertyPath: m_Name
       value: Road_Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
@@ -2080,6 +2332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 611a92411e2b04e4c9fae69781432568, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 611a92411e2b04e4c9fae69781432568, type: 3}
 --- !u!4 &1198017444968403932 stripped
@@ -2159,6 +2415,10 @@ PrefabInstance:
     - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
       propertyPath: m_Name
       value: Road_Barrier (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
@@ -2240,6 +2500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
 --- !u!4 &520119058617780621 stripped
@@ -2319,6 +2583,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -2408,6 +2676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
 --- !u!4 &1198017444822587241 stripped
@@ -2485,6 +2757,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 83349215e21a96e4c9f6b0f3f7392e27, type: 3}
       propertyPath: m_Name
       value: Building_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 83349215e21a96e4c9f6b0f3f7392e27, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83349215e21a96e4c9f6b0f3f7392e27, type: 3}
@@ -2574,6 +2850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_1
       objectReference: {fileID: 0}
+    - target: {fileID: 9102875994649005946, guid: 8adadfa643c87f74bb2402c31a4e577c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8adadfa643c87f74bb2402c31a4e577c, type: 3}
 --- !u!4 &7075918255238521985 stripped
@@ -2653,6 +2933,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -2738,6 +3022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tram_Stop
       objectReference: {fileID: 0}
+    - target: {fileID: 8676478622907641567, guid: ff39cab3e6ddeda4ba9d7d17a9501182, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff39cab3e6ddeda4ba9d7d17a9501182, type: 3}
 --- !u!4 &7208103576796592373 stripped
@@ -2818,6 +3106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811847316886028 stripped
@@ -2879,6 +3171,10 @@ PrefabInstance:
     - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
       propertyPath: m_Name
       value: Road_Barrier (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
@@ -2960,6 +3256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811846089325508 stripped
@@ -3037,6 +3337,10 @@ PrefabInstance:
     - target: {fileID: 2908944898091809559, guid: 8d1af90125950e342999c5dbdefdd676, type: 3}
       propertyPath: m_Name
       value: Ambulance
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908944898091809559, guid: 8d1af90125950e342999c5dbdefdd676, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1af90125950e342999c5dbdefdd676, type: 3}
@@ -3117,6 +3421,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -3206,6 +3514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
 --- !u!4 &1198017444582135845 stripped
@@ -3267,6 +3579,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -3348,6 +3664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrier
       objectReference: {fileID: 0}
+    - target: {fileID: 7769282103224168044, guid: 1567cd1857ec2e243b6f7ca126522873, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1567cd1857ec2e243b6f7ca126522873, type: 3}
 --- !u!4 &8625334183003266220 stripped
@@ -3428,6 +3748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811846117463390 stripped
@@ -3498,6 +3822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9102875994649005946, guid: 8adadfa643c87f74bb2402c31a4e577c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8adadfa643c87f74bb2402c31a4e577c, type: 3}
 --- !u!4 &7075918254944289620 stripped
@@ -3533,6 +3861,10 @@ PrefabInstance:
     - target: {fileID: 1280414521145918320, guid: c46b09b837db5d546890e409caf769e6, type: 3}
       propertyPath: m_Name
       value: Truck_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280414521145918320, guid: c46b09b837db5d546890e409caf769e6, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 1913786392158656970, guid: c46b09b837db5d546890e409caf769e6, type: 3}
       propertyPath: m_RootOrder
@@ -3678,6 +4010,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7971cc9ebcf89b47926703329e74972, type: 3}
 --- !u!4 &1198017444523576178 stripped
@@ -3739,6 +4075,10 @@ PrefabInstance:
     - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
       propertyPath: m_Name
       value: Road_Barrier (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
@@ -3820,6 +4160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Barrier (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
 --- !u!4 &6283418735417184152 stripped
@@ -3900,6 +4244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811846027848623 stripped
@@ -3961,6 +4309,10 @@ PrefabInstance:
     - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
@@ -4035,6 +4387,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 329c1c6c7107ba04fb978ccf4448654d, type: 3}
       propertyPath: m_Name
       value: Building_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 329c1c6c7107ba04fb978ccf4448654d, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 329c1c6c7107ba04fb978ccf4448654d, type: 3}
@@ -4116,6 +4472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811845823332012 stripped
@@ -4189,6 +4549,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 817683154b6697349aefce724f1e7ac1, type: 3}
       propertyPath: m_Name
       value: Building_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 817683154b6697349aefce724f1e7ac1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817683154b6697349aefce724f1e7ac1, type: 3}
@@ -4270,6 +4634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_2 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
 --- !u!4 &520119059063212229 stripped
@@ -4349,6 +4717,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -4430,6 +4802,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
 --- !u!4 &520119059002922807 stripped
@@ -4509,6 +4885,10 @@ PrefabInstance:
     - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
       propertyPath: m_Name
       value: Road_Barrier (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
@@ -4590,6 +4970,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
 --- !u!4 &520119058950892710 stripped
@@ -4625,6 +5009,10 @@ PrefabInstance:
     - target: {fileID: 1412363122834768907, guid: c2950abe12173684f8fb76d8cd3ed1b3, type: 3}
       propertyPath: m_Name
       value: Police
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412363122834768907, guid: c2950abe12173684f8fb76d8cd3ed1b3, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 1788606808321810097, guid: c2950abe12173684f8fb76d8cd3ed1b3, type: 3}
       propertyPath: m_RootOrder
@@ -4774,6 +5162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 197684157b259f049ab443d61396b90b, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 197684157b259f049ab443d61396b90b, type: 3}
 --- !u!4 &1198017444037231024 stripped
@@ -4862,6 +5254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_9 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7695119763558581554, guid: a824f9a62caf9c54a9458419d6dcbbe8, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a824f9a62caf9c54a9458419d6dcbbe8, type: 3}
 --- !u!4 &8551159158921314675 stripped
@@ -4942,6 +5338,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811846671919076 stripped
@@ -5016,6 +5416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e73a0fbcdab5c2498c849571359018c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e73a0fbcdab5c2498c849571359018c, type: 3}
 --- !u!4 &1198017444019856716 stripped
@@ -5051,6 +5455,10 @@ PrefabInstance:
     - target: {fileID: 7099967877580977989, guid: 087fff42d3c77b246925b4782351aa19, type: 3}
       propertyPath: m_Name
       value: Bus Stop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099967877580977989, guid: 087fff42d3c77b246925b4782351aa19, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 7621207150434823679, guid: 087fff42d3c77b246925b4782351aa19, type: 3}
       propertyPath: m_RootOrder
@@ -5180,6 +5588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_2 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
 --- !u!4 &520119059785813613 stripped
@@ -5268,6 +5680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Crossroads_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4be66b3ded6d0247b9db2222d470123, type: 3}
 --- !u!4 &1198017443962482080 stripped
@@ -5329,6 +5745,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -5410,6 +5830,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Barrier (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
 --- !u!4 &6283418735919844808 stripped
@@ -5445,6 +5869,10 @@ PrefabInstance:
     - target: {fileID: 8402656159568870331, guid: cd139aa5bd62b5b458ece3376c0955ff, type: 3}
       propertyPath: m_Name
       value: Bus_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402656159568870331, guid: cd139aa5bd62b5b458ece3376c0955ff, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 9212090972700795137, guid: cd139aa5bd62b5b458ece3376c0955ff, type: 3}
       propertyPath: m_RootOrder
@@ -5578,6 +6006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Work_Sign_1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1989318905738134537, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b3ee2b372b87943a6cbce286749574, type: 3}
 --- !u!4 &574811846443206925 stripped
@@ -5639,6 +6071,10 @@ PrefabInstance:
     - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
       propertyPath: m_Name
       value: Road_Work_Sign_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969914521657366805, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c53bb3cbf50444a3c727dabf5dbbc, type: 3}
@@ -5719,6 +6155,10 @@ PrefabInstance:
     - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
       propertyPath: m_Name
       value: Road_Barrier (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427522932507016689, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88434706d6ff5e243868b378b33cd8b1, type: 3}
@@ -5811,6 +6251,10 @@ PrefabInstance:
     - target: {fileID: 2102204373591914974, guid: c113180fba5d60d419f8e84af96f8306, type: 3}
       propertyPath: m_Name
       value: Taxi
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102204373591914974, guid: c113180fba5d60d419f8e84af96f8306, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c113180fba5d60d419f8e84af96f8306, type: 3}

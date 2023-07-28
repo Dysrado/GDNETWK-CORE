@@ -62,7 +62,30 @@ public class PlayerNetworkV2 : NetworkBehaviour
         {
             mesh.material.color = colors[index % colors.Length];
         }
-        
+
+        // Attach Respawn Point
+        GameObject[] respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
+        if(index == 0)
+        {
+            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[0];
+        }
+        else if(index == 1)
+        {
+            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[1];
+        }
+        else if(index == 2)
+        {
+            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[2];
+        }
+        else if(index == 3)
+        {
+            gameObject.GetComponent<PlayerManager>().respawnPoint = respawnPoints[3];
+        }
+        else
+        {
+            Debug.Log("5 / 4 Players, Not Enough Spawn Points.");
+        }
+
     }
 
     public int GetNetworkID()

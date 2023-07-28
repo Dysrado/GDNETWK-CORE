@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
-    [SerializeField] private float bulletLifetime = 0.6f;
-    private float bulletTicks = 0.0f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +13,17 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bulletTicks += Time.deltaTime;
-        if(bulletTicks > bulletLifetime)
+
+    }
+
+
+    //Environment Detection
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Environment"))
         {
-            this.gameObject.SetActive(false);
-            bulletTicks = 0.0f;
+            Destroy(gameObject);
         }
+
     }
 }

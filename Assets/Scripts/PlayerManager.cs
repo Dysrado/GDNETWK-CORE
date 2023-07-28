@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,6 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    
     [SerializeField] private Magnum magnum;
     [SerializeField] private SMG smg;
     [SerializeField] private Sniper sniper;
@@ -23,6 +23,9 @@ public class PlayerManager : MonoBehaviour
 
     private WeaponClass activeWeapon;
     private NameTagBehaviour nameTag;
+
+    // Respawn Variables
+    public GameObject respawnPoint;
 
 
     // Start is called before the first frame update
@@ -51,57 +54,57 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //// Switch Weapons 
-        //if (Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
-        //{
-        //    shotgun.enabled = false;
-        //    rifle.enabled = false;
-        //    smg.enabled = false;
-        //    sniper.enabled = false;
-        //    magnum.enabled = true;
+        // Switch Weapons 
+        if (Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
+        {
+            shotgun.enabled = false;
+            rifle.enabled = false;
+            smg.enabled = false;
+            sniper.enabled = false;
+            magnum.enabled = true;
 
-        //    activeWeapon = (WeaponClass)magnum;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha2)) // Equip SMG
-        //{
-        //    shotgun.enabled = false;
-        //    rifle.enabled = false;
-        //    magnum.enabled = false;
-        //    sniper.enabled = false;
-        //    smg.enabled = true;
+            activeWeapon = (WeaponClass)magnum;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) // Equip SMG
+        {
+            shotgun.enabled = false;
+            rifle.enabled = false;
+            magnum.enabled = false;
+            sniper.enabled = false;
+            smg.enabled = true;
 
-        //    activeWeapon = (WeaponClass)smg;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha3)) // Equip Sniper
-        //{
-        //    shotgun.enabled = false;
-        //    rifle.enabled = false;
-        //    magnum.enabled = false;
-        //    smg.enabled = false;
-        //    sniper.enabled = true;
+            activeWeapon = (WeaponClass)smg;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) // Equip Sniper
+        {
+            shotgun.enabled = false;
+            rifle.enabled = false;
+            magnum.enabled = false;
+            smg.enabled = false;
+            sniper.enabled = true;
 
-        //    activeWeapon = (WeaponClass)sniper;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha4)) // Equip Rifle
-        //{
-        //    shotgun.enabled = false;
-        //    magnum.enabled = false;
-        //    smg.enabled = false;
-        //    sniper.enabled = false;
-        //    rifle.enabled = true;
+            activeWeapon = (WeaponClass)sniper;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) // Equip Rifle
+        {
+            shotgun.enabled = false;
+            magnum.enabled = false;
+            smg.enabled = false;
+            sniper.enabled = false;
+            rifle.enabled = true;
 
-        //    activeWeapon = (WeaponClass)rifle;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha5)) // Equip Shotgun
-        //{
-        //    magnum.enabled = false;
-        //    smg.enabled = false;
-        //    sniper.enabled = false;
-        //    rifle.enabled = false;
-        //    shotgun.enabled = true;
+            activeWeapon = (WeaponClass)rifle;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5)) // Equip Shotgun
+        {
+            magnum.enabled = false;
+            smg.enabled = false;
+            sniper.enabled = false;
+            rifle.enabled = false;
+            shotgun.enabled = true;
 
-        //    activeWeapon = (WeaponClass)shotgun;
-        //}
+            activeWeapon = (WeaponClass)shotgun;
+        }
     }
 
     //Bullet Detection
@@ -116,8 +119,7 @@ public class PlayerManager : MonoBehaviour
             //Debug.LogWarning($"Got Hit by {bulletId.GetOwnerId()}");
             if(bulletId.GetOwnerId() != playerID)
             {
-                CheckHealth(bulletId.GetOwnerId(), 50); //Don't forget to change damage
-
+                CheckHealth(bulletId.GetOwnerId(), activeWeapon.damage); 
             }
 
         }
@@ -132,7 +134,14 @@ public class PlayerManager : MonoBehaviour
         {
             int ownerId = this.gameObject.GetComponent<PlayerNetworkV2>().GetNetworkID();
             GamaManager.Instance.Killed(ownerId, shooterID);
+            RespawnPlayer();  
         }
+    }
+
+    public void RespawnPlayer()
+    {
+        currentHealth = 100;
+        gameObject.transform.position = respawnPoint.transform.position; // Set Player Position to Spawn Point
     }
 
     public void ResetStats()

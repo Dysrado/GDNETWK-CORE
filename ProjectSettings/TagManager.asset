@@ -8,6 +8,8 @@ TagManager:
   - Bullets
   - Username
   - WorldSpace
+  - Environment
+  - RespawnPoint
   layers:
   - Default
   - TransparentFX
