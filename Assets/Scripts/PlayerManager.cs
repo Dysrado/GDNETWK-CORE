@@ -109,30 +109,29 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullets"))
         {
+            
             //Debug.LogWarning("Collided with a bullet");
 
             BulletID bulletId = collision.gameObject.GetComponent<BulletID>();
             //Debug.LogWarning($"Got Hit by {bulletId.GetOwnerId()}");
+            if(bulletId.GetOwnerId() != playerID)
+            {
+                CheckHealth(bulletId.GetOwnerId(), 50); //Don't forget to change damage
 
+            }
 
-            /*
-             * TODO:  
-             *  1) Add parameters/component to the bullet for much damage can it take.
-             */
-
-            CheckHealth(bulletId.GetOwnerId(),50);
         }
         
     }
 
     
-    private void CheckHealth (int hitId, int damage)
+    private void CheckHealth (int shooterID, int damage)
     {
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
             int ownerId = this.gameObject.GetComponent<PlayerNetworkV2>().GetNetworkID();
-            GamaManager.Instance.Killed(ownerId, hitId);
+            GamaManager.Instance.Killed(ownerId, shooterID);
         }
     }
 
