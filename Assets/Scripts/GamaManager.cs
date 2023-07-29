@@ -129,12 +129,14 @@ public class GamaManager : MonoBehaviour
     public void StartGame()
     {
         hasStarted = true;
+        GameObject.FindObjectOfType<AmmoSpawnManager>().StartGame();
         //this.startBtn.SetActive(false);
     }
 
     public void EndGame()
     {
         hasStarted = false;
+        GameObject.FindObjectOfType<AmmoSpawnManager>().EndGame();
         elapsedGameTime = 0.0f;
     }
 

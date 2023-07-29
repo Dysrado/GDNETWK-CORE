@@ -11,6 +11,8 @@ public class PickupDetection : NetworkBehaviour
     private Magnum magnum;
     private SMG smg;
     private Sniper sniper;
+    private Rifle rifle;
+    private Shotgun shotgun;
 
 
 
@@ -20,7 +22,8 @@ public class PickupDetection : NetworkBehaviour
         magnum = this.gameObject.GetComponent<Magnum>();
         smg = this.gameObject.GetComponent<SMG>();
         sniper = this.gameObject.GetComponent<Sniper>();
-
+        rifle = this.gameObject.GetComponent<Rifle>();
+        shotgun = this.gameObject.GetComponent<Shotgun>();
     }
 
     // Update is called once per frame
@@ -45,6 +48,12 @@ public class PickupDetection : NetworkBehaviour
 
             else if (sniper.isActiveAndEnabled)
                 sniper.RecoverAmmo();
+
+            else if (rifle.isActiveAndEnabled)
+                rifle.RecoverAmmo();
+
+            else if (shotgun.isActiveAndEnabled)
+                shotgun.RecoverAmmo();
 
             other.GetComponent<NetworkObject>().Despawn(); 
            // RequestDeletePickupServerRpc(other.GetComponent<NetworkObject>());
