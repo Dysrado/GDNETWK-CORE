@@ -46,11 +46,13 @@ public class WeaponClass : NetworkBehaviour
         {
             mousePos = hit.point;
         }
+        mousePos.y = 0.0f; // remove y component
+
         // Get direction towards mouse
         Vector3 playerToMouse;
         playerToMouse = mousePos - transform.position;
         playerToMouse = playerToMouse.normalized;
-
+        Debug.Log("Player to Mouse: " + playerToMouse);
         return playerToMouse;
     }
 

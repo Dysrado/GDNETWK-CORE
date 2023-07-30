@@ -530,6 +530,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1150924326305748135, guid: fb41d36aecc65e746bd9bba430f42280, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1669304915234914776, guid: fb41d36aecc65e746bd9bba430f42280, type: 3}
       propertyPath: m_Name
       value: FirstContactMap

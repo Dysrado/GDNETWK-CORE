@@ -89,6 +89,7 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("Has Spawn Point");
         }
         
+        /*
         // Switch Weapons 
         if (Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
         {
@@ -140,6 +141,7 @@ public class PlayerManager : MonoBehaviour
 
             activeWeapon = (WeaponClass)shotgun;
         }
+        */
     }
 
     //Bullet Detection
