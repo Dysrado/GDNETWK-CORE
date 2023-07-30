@@ -27,10 +27,15 @@ public class PlayerManager : MonoBehaviour
     // Respawn Variables
     public GameObject respawnPoint = null;
 
+    // Other Player Variables
+    GameObject[] players;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        players = new GameObject[4]; // assuming 4 people
+
         magnum = GetComponent<Magnum>();
         smg = GetComponent<SMG>();
         sniper = GetComponent<Sniper>();
@@ -84,12 +89,10 @@ public class PlayerManager : MonoBehaviour
             }
             
         }
-        else
-        {
-            Debug.Log("Has Spawn Point");
-        }
-        
-        /*
+
+        // Keep Track of Players
+        players = GameObject.FindGameObjectsWithTag("Player");
+
         // Switch Weapons 
         if (Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
         {
@@ -141,7 +144,7 @@ public class PlayerManager : MonoBehaviour
 
             activeWeapon = (WeaponClass)shotgun;
         }
-        */
+        
     }
 
     //Bullet Detection
@@ -149,18 +152,26 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullets"))
         {
-            
             //Debug.LogWarning("Collided with a bullet");
-
             BulletID bulletId = collision.gameObject.GetComponent<BulletID>();
+
             //Debug.LogWarning($"Got Hit by {bulletId.GetOwnerId()}");
             if(bulletId.GetOwnerId() != playerID)
             {
-                CheckHealth(bulletId.GetOwnerId(), activeWeapon.damage); 
+                // Get Killer's Active Weapon
+                WeaponClass killerWeapon; 
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if (bulletId.GetOwnerId() == players[i].GetComponent<PlayerNetworkV2>().GetNetworkID())
+                    {
+                        killerWeapon = (WeaponClass)players[i].GetComponent<PlayerManager>().GetActiveWeapon();
+                        CheckHealth(bulletId.GetOwnerId(), killerWeapon.damage);
+                        Debug.Log("Killed by " + killerWeapon.name);
+                        i = players.Length;
+                    }
+                }
             }
-
         }
-        
     }
 
     
@@ -263,6 +274,11 @@ public class PlayerManager : MonoBehaviour
 
 
     /*Weapon Section*/
+
+    public WeaponClass GetActiveWeapon()
+    {
+        return activeWeapon;
+    }
 
     public int GetCurrentAmmo()
     {

@@ -52,7 +52,6 @@ public class WeaponClass : NetworkBehaviour
         Vector3 playerToMouse;
         playerToMouse = mousePos - transform.position;
         playerToMouse = playerToMouse.normalized;
-        Debug.Log("Player to Mouse: " + playerToMouse);
         return playerToMouse;
     }
 
