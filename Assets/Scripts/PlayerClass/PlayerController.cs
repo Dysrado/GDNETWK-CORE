@@ -33,13 +33,15 @@ public class PlayerController : NetworkBehaviour
 
     [SerializeField] NetworkVariable<PlayerState> networkPlayerState = new NetworkVariable<PlayerState>();
 
+    private Camera _camera; // Main camera
+
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         _dashSpeed = speed * DASH_MULTIPLIER;
-        
+        _camera = Camera.main;
     }
 
     private void Start()
@@ -87,6 +89,8 @@ public class PlayerController : NetworkBehaviour
             {
                 UpdatePlayerStateServerRpc(PlayerState.IDLE);
             }
+            // Camera Movement
+            _camera.transform.position = new Vector3(transform.position.x, _camera.transform.position.y, transform.position.z);
         }
         
 
