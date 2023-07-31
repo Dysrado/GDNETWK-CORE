@@ -241,13 +241,11 @@ public class GamaManager : MonoBehaviour
 
     private void SetEndScreen(PlayerManager player)
     {
-        EndScreenUI.SetActive(true);
-        winnerText.SetText(player.GetPlayerUsername());
-        Time.timeScale = 0.0f;
+      GameObject.FindObjectOfType<WinDetection>().OnWin(player.GetPlayerUsername());
+       
+        //winnerText.SetText(player.GetPlayerUsername());
+        //Time.timeScale = 0.0f;
         
     }
-    public void LeaveGame()
-    {
-
-    }
+    
 }
