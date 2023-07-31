@@ -11,7 +11,9 @@ public class GamaManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerTxt;
     [SerializeField] private TextMeshProUGUI ammoTxt;
     [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private TextMeshProUGUI winnerText;
     [SerializeField] private GameObject startBtn;
+    [SerializeField] private GameObject EndScreenUI;
 
 
 
@@ -162,6 +164,7 @@ public class GamaManager : MonoBehaviour
         if(playerInfo[killerId].GetScore() >= maxScore)
         {
             EndGame();
+            SetEndScreen(playerInfo[killerId]);
             Debug.LogError("You win bro");
         }
     }
@@ -236,4 +239,15 @@ public class GamaManager : MonoBehaviour
         }
     }
 
+    private void SetEndScreen(PlayerManager player)
+    {
+        EndScreenUI.SetActive(true);
+        winnerText.SetText(player.GetPlayerUsername());
+        Time.timeScale = 0.0f;
+        
+    }
+    public void LeaveGame()
+    {
+
+    }
 }

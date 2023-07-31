@@ -241,11 +241,21 @@ public class TestLobby : MonoBehaviour
     {
         try
         {
-            await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId);
-            FindObjectOfType<LobbyUIEvents>().ToggleLobby();
-            MainLobbyUI.SetActive(false);
-            LobbyUI.SetActive(true);
-            joinedLobby = null;
+            if(joinedLobby == null)
+            {
+                FindObjectOfType<LobbyUIEvents>().ToggleLobby();
+                MainLobbyUI.SetActive(false);
+                LobbyUI.SetActive(true);
+            }
+            if(joinedLobby != null)
+            {
+                await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId);
+                FindObjectOfType<LobbyUIEvents>().ToggleLobby();
+                MainLobbyUI.SetActive(false);
+                LobbyUI.SetActive(true);
+                joinedLobby = null;
+            }
+           
         }
         catch (LobbyServiceException e)
         {
