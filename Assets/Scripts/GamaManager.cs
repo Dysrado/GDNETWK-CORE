@@ -161,10 +161,12 @@ public class GamaManager : MonoBehaviour
         //Ill change this after at some point
         playerInfo[killerId].UpgradeWeapon(levelUpRequirement);
 
-        if(playerInfo[killerId].GetScore() >= maxScore)
+        if(playerInfo[killerId].GetScore() >= maxScore) //Detects if the player has won
         {
             EndGame();
-            SetEndScreen(playerInfo[killerId]);
+            FindObjectOfType<WinnerTexthandler>().RequestWinScreenServerRPC(playerInfo[killerId].GetPlayerUsername());
+            
+            //SetEndScreen(playerInfo[killerId]);
             Debug.LogError("You win bro");
         }
     }

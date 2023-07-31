@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
+using Unity.Netcode;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestLobby : MonoBehaviour
 {
@@ -349,4 +351,17 @@ public class TestLobby : MonoBehaviour
             }
         }
     }
+
+    public void Disconnect()
+    {
+        FindObjectOfType<WinBehaviour>().TurnOff();
+        GameMap.SetActive(false);
+        MainLobbyUI.SetActive(false);
+        LobbyUI.SetActive(true);
+
+        NetworkManager.Singleton.Shutdown();
+        LeaveLobby();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }

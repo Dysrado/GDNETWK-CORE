@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.Netcode;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+using Unity.Collections;
 
 public class WinBehaviour : NetworkBehaviour
 {
@@ -23,13 +23,18 @@ public class WinBehaviour : NetworkBehaviour
         
     }
 
-    public void SetName(string name)
+    public void SetName(FixedString128Bytes name)
     {
-        playerName.text = name;
+        playerName.text = name.ToString();
     }
 
     public void Leave()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        FindObjectOfType<TestLobby>().Disconnect();
+    }
+
+    public void TurnOff()
+    {
+        this.gameObject.SetActive(false);
     }
 }

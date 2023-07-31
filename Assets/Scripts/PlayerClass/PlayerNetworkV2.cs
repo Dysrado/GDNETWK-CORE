@@ -14,6 +14,7 @@ public class PlayerNetworkV2 : NetworkBehaviour
     [SerializeField] private float _cheapInterpolationTime = 0.1f;
     [SerializeField] private SkinnedMeshRenderer[] meshes;
     [SerializeField] private GameObject _nameTag;
+    
 
     private readonly NetworkVariable<Color> NetColor = new();
     private readonly Color[] colors = { Color.red, Color.blue, Color.green, Color.yellow, Color.black, Color.white, Color.cyan, Color.gray };
@@ -77,9 +78,12 @@ public class PlayerNetworkV2 : NetworkBehaviour
             TransmitState();
 
         }
+        
         else { 
             ConsumeState();
         }
+
+
     }
 
     #region Transmit State
@@ -180,4 +184,6 @@ public class PlayerNetworkV2 : NetworkBehaviour
         public static implicit operator string(NetworkString s) => s.ToString();
         public static implicit operator NetworkString(string s) => new NetworkString() { info = new FixedString32Bytes(s) };
     }
+
+    
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2724,6 +2724,8 @@ GameObject:
   - component: {fileID: 2060079385}
   - component: {fileID: 2060079386}
   - component: {fileID: 2060079387}
+  - component: {fileID: 2060079389}
+  - component: {fileID: 2060079388}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2863,6 +2865,38 @@ MonoBehaviour:
   Map: {fileID: 294269374}
   TitleUI: {fileID: 232699931}
   LobbyUI: {fileID: 410202529}
+--- !u!114 &2060079388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060079380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 712210621
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &2060079389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060079380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8fe06cdbd8b8847a0dd504f1fe02c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WinnerScreenUI: {fileID: 5184570653034578736, guid: 27c24189ad11f454ebe844f879430d22, type: 3}
 --- !u!1 &2090594893
 GameObject:
   m_ObjectHideFlags: 0
