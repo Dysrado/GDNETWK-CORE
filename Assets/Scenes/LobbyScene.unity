@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3036,6 +3036,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1383578213862637689, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
+      propertyPath: m_text
+      value: First to get 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383578213862637689, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
+      propertyPath: m_fontSize
+      value: 60.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2428090973400746810, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3184,6 +3192,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4719844591912781616, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
+      propertyPath: m_FlexibleWidth
+      value: 1.21
+      objectReference: {fileID: 0}
     - target: {fileID: 5035467064450337953, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3350,6 +3362,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6782962424497203832, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220604308189539435, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220604308189539435, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
+      propertyPath: m_Padding.m_Right
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220604308189539435, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353248229831060101, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
+      propertyPath: m_margin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714879423272087732, guid: 106befd32b2a5ec47ab3c925622ae315, type: 3}
@@ -3564,7 +3592,7 @@ PrefabInstance:
       objectReference: {fileID: 710836567}
     - target: {fileID: 4669527367978000448, guid: ca5d7e73e440f9e4293f255646ec0474, type: 3}
       propertyPath: maxScore
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4669527367978000448, guid: ca5d7e73e440f9e4293f255646ec0474, type: 3}
       propertyPath: scoreTxt
@@ -3592,7 +3620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669527367978000448, guid: ca5d7e73e440f9e4293f255646ec0474, type: 3}
       propertyPath: maxGameDuration
-      value: 90
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4669527367978000448, guid: ca5d7e73e440f9e4293f255646ec0474, type: 3}
       propertyPath: announcementHolder
@@ -3600,7 +3628,7 @@ PrefabInstance:
       objectReference: {fileID: 1544656242687563989}
     - target: {fileID: 4669527367978000448, guid: ca5d7e73e440f9e4293f255646ec0474, type: 3}
       propertyPath: levelUpRequirement
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4669527367978000448, guid: ca5d7e73e440f9e4293f255646ec0474, type: 3}
       propertyPath: prefabAnnouncement

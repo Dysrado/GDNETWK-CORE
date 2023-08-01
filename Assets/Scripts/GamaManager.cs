@@ -89,6 +89,10 @@ public class GamaManager : MonoBehaviour
             {
                 //Call a function to call the end game;
                 EndGame();
+
+                if(FindWinner() != null)
+                    FindObjectOfType<WinnerTexthandler>().RequestWinScreenServerRPC(FindWinner().GetPlayerUsername());
+
             }
 
             else
@@ -165,8 +169,7 @@ public class GamaManager : MonoBehaviour
         {
             EndGame();
             FindObjectOfType<WinnerTexthandler>().RequestWinScreenServerRPC(playerInfo[killerId].GetPlayerUsername());
-            
-            //SetEndScreen(playerInfo[killerId]);
+
             Debug.LogError("You win bro");
         }
     }
@@ -239,6 +242,36 @@ public class GamaManager : MonoBehaviour
             //Insert Fucntion to enable the start button
             //startBtn.SetActive(true);
         }
+    }
+
+    public PlayerManager FindWinner()
+    {
+       
+        GameObject[] players;
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        int highestScore = 0;
+        int winIndex = 0;
+        int counter = 0;
+
+        foreach (GameObject player in players)
+        {
+
+            if(highestScore < player.GetComponent<PlayerManager>().GetScore())
+            {
+                highestScore = player.GetComponent<PlayerManager>().GetScore();
+                winIndex = counter;
+            }
+
+            counter++;
+            
+        }
+        
+        if(counter == 0) {
+            Debug.Log("No Player Found"); return null;
+        }
+
+        return playerInfo[winIndex];
     }
 
     private void SetEndScreen(PlayerManager player)
