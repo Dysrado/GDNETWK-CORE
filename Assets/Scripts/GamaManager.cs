@@ -148,8 +148,8 @@ public class GamaManager : MonoBehaviour
     public void Killed(int ownerId, int killedId)
     {
         Debug.Log($"{playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
-        GameObject killAnnouncement = prefabAnnouncement;
-        Instantiate(killAnnouncement, announcementHolder.transform);
+
+        GameObject killAnnouncement = Instantiate(prefabAnnouncement, announcementHolder.transform); ;
         killAnnouncement.GetComponent<KillAnnouncementBehaviour>().InsertText($"Player: {playerInfo[ownerId].GetPlayerUsername()} was killed by {playerInfo[killedId].GetPlayerUsername()}");
 
         UpdateScore(killedId);
