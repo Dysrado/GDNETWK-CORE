@@ -35,6 +35,8 @@ public class PlayerController : NetworkBehaviour
 
     private Camera _camera; // Main camera
 
+    [SerializeField] private PlayerManager playerManager;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -56,75 +58,75 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = Input.mousePosition;
-        Ray r = mainCamera.ScreenPointToRay(mousePos);
-
-        if (Input.GetKeyDown(DASH_BUTTON) || Input.GetKeyDown(ALT_DASH_BUTTON))
+        if(!playerManager.isDead)
         {
-            if (!_isDashing && _canDash)
+            mousePos = Input.mousePosition;
+            Ray r = mainCamera.ScreenPointToRay(mousePos);
+
+            if (Input.GetKeyDown(DASH_BUTTON) || Input.GetKeyDown(ALT_DASH_BUTTON))
             {
-                Dash(_dashDuration); // The actual dash
-                StartDashCD(_dashCooldown); // When Dash() finishes do StartDashCD()
+                if (!_isDashing && _canDash)
+                {
+                    Dash(_dashDuration); // The actual dash
+                    StartDashCD(_dashCooldown); // When Dash() finishes do StartDashCD()
+                }
             }
-        }
-        else
-        {
-            moveInput.x = Input.GetAxisRaw("Horizontal");
-            moveInput.z = Input.GetAxisRaw("Vertical");
-
-        }
-
-
-        if (IsOwner)
-        {
-            if (_isDashing) 
+            else
             {
-                UpdatePlayerStateServerRpc(PlayerState.DASHING);
+                moveInput.x = Input.GetAxisRaw("Horizontal");
+                moveInput.z = Input.GetAxisRaw("Vertical");
+
             }
-            else if (moveInput != Vector3.zero)
+
+            if (IsOwner)
             {
-                UpdatePlayerStateServerRpc(PlayerState.RUNNING);
+                if (_isDashing)
+                {
+                    UpdatePlayerStateServerRpc(PlayerState.DASHING);
+                }
+                else if (moveInput != Vector3.zero)
+                {
+                    UpdatePlayerStateServerRpc(PlayerState.RUNNING);
+                }
+                else if (moveInput == Vector3.zero)
+                {
+                    UpdatePlayerStateServerRpc(PlayerState.IDLE);
+                }
+                // Camera Movement
+                _camera.transform.position = new Vector3(transform.position.x, _camera.transform.position.y, transform.position.z);
             }
-            else if(moveInput == Vector3.zero)
+
+
+            // Handles Animations
+            if (networkPlayerState.Value == PlayerState.IDLE)
             {
-                UpdatePlayerStateServerRpc(PlayerState.IDLE);
+                _anim.SetBool("IsRunning", false);
+                _anim.SetBool("IsDashing", false);
+
             }
-            // Camera Movement
-            _camera.transform.position = new Vector3(transform.position.x, _camera.transform.position.y, transform.position.z);
-        }
-        
-
-        // Handles Animations
-        if (networkPlayerState.Value == PlayerState.IDLE)
-        {
-            _anim.SetBool("IsRunning", false);
-            _anim.SetBool("IsDashing", false);
-
-        }
-        else if (networkPlayerState.Value == PlayerState.RUNNING)
-        {
-            _anim.SetBool("IsRunning", true);
-            _anim.SetBool("IsDashing", false);
-
-        }
-        if (networkPlayerState.Value == PlayerState.DASHING)
-        {
-            _anim.SetBool("IsDashing", true);
-
-        }
-
-        // Look at
-        if (Physics.Raycast(r, out RaycastHit hit))
-        {
-            if (hit.collider.gameObject != this.gameObject)
+            else if (networkPlayerState.Value == PlayerState.RUNNING)
             {
-                var lookDirection = hit.point - transform.position;
-                var rotation = Quaternion.LookRotation(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
+                _anim.SetBool("IsRunning", true);
+                _anim.SetBool("IsDashing", false);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
             }
-            
+            if (networkPlayerState.Value == PlayerState.DASHING)
+            {
+                _anim.SetBool("IsDashing", true);
 
+            }
+
+            // Look at
+            if (Physics.Raycast(r, out RaycastHit hit))
+            {
+                if (hit.collider.gameObject != this.gameObject)
+                {
+                    var lookDirection = hit.point - transform.position;
+                    var rotation = Quaternion.LookRotation(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
+
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+                }
+            }
         }
     }
 

@@ -10,7 +10,7 @@ public class SMG : WeaponClass
     // Start is called before the first frame update
     void Awake()
     {
-        damage = 17; // 7 Shots to Kill
+        damage = 15; // 7 Shots to Kill
         projectileSpeed = 13.0f;
         reloadSpeed = 1.6f;
         bulletLifetime = 1.2f;

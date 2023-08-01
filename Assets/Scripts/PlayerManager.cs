@@ -26,10 +26,13 @@ public class PlayerManager : MonoBehaviour
 
     // Respawn Variables
     public GameObject respawnPoint = null;
+    public float respawnTime = 3.0f;
 
     // Other Player Variables
     GameObject[] players;
-
+    public bool isDead;
+    public CapsuleCollider capsuleCollider;
+    public GameObject bodyRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +57,10 @@ public class PlayerManager : MonoBehaviour
         //Default Stats
         score = 0;
         killCount = 0;
+
+        // Is Dead
+        isDead = false;
+
     }
 
     // Update is called once per frame
@@ -153,43 +160,44 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullets"))
         {
             //Debug.LogWarning("Collided with a bullet");
-            BulletID bulletId = collision.gameObject.GetComponent<BulletID>();
+            BulletInfo bulletId = collision.gameObject.GetComponent<BulletInfo>();
 
             //Debug.LogWarning($"Got Hit by {bulletId.GetOwnerId()}");
             if(bulletId.GetOwnerId() != playerID)
             {
-                // Get Killer's Active Weapon
-                WeaponClass killerWeapon; 
-                for (int i = 0; i < players.Length; i++)
-                {
-                    if (bulletId.GetOwnerId() == players[i].GetComponent<PlayerNetworkV2>().GetNetworkID())
-                    {
-                        killerWeapon = (WeaponClass)players[i].GetComponent<PlayerManager>().GetActiveWeapon();
-                        CheckHealth(bulletId.GetOwnerId(), killerWeapon.damage);
-                        Debug.Log("Killed by " + killerWeapon.name);
-                        i = players.Length;
-                    }
-                }
+                CheckHealth(bulletId.GetOwnerId(), bulletId.GetBulletDamage());
             }
         }
     }
 
-    
-    private void CheckHealth (int shooterID, int damage)
+  
+    private void CheckHealth(int shooterID, int damage)
     {
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
+            isDead = true;
+            bodyRenderer.SetActive(false);
+            capsuleCollider.enabled = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             int ownerId = this.gameObject.GetComponent<PlayerNetworkV2>().GetNetworkID();
             GamaManager.Instance.Killed(ownerId, shooterID);
-            RespawnPlayer();  
+            StartCoroutine(RespawnPlayer());  
         }
     }
 
-    public void RespawnPlayer()
+    public IEnumerator RespawnPlayer()
     {
+        yield return new WaitForSeconds(respawnTime);
         currentHealth = 100;
         gameObject.transform.position = respawnPoint.transform.position; // Set Player Position to Spawn Point
+        isDead = false;
+        bodyRenderer.SetActive(true);
+        capsuleCollider.enabled = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
     public void ResetStats()

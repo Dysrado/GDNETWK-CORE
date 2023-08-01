@@ -60,7 +60,8 @@ public class WeaponClass : NetworkBehaviour
         // Spawn bullet
         GameObject bullet = Instantiate(bulletPrefab, transform.position + (new Vector3(playerToMouse.x, 0, playerToMouse.z) * spawnOffset), bulletPrefab.transform.rotation);
         
-        bullet.AddComponent<BulletID>().Initialize((int)OwnerClientId);
+        bullet.AddComponent<BulletInfo>().Initialize((int)OwnerClientId);
+        bullet.GetComponent<BulletInfo>().SetBulletDamage(damage); // set bullets damage
        
         Rigidbody bulletRb;
         bulletRb = bullet.GetComponent<Rigidbody>();
