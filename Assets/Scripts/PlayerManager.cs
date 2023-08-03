@@ -100,6 +100,7 @@ public class PlayerManager : MonoBehaviour
         // Keep Track of Players
         players = GameObject.FindGameObjectsWithTag("Player");
 
+        /*
         // Switch Weapons 
         if (Input.GetKeyDown(KeyCode.Alpha1)) // Equip Magnum
         {
@@ -151,6 +152,7 @@ public class PlayerManager : MonoBehaviour
 
             activeWeapon = (WeaponClass)shotgun;
         }
+        */
         
     }
 
