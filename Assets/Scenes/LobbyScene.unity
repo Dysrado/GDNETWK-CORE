@@ -534,6 +534,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1669304913880182776, guid: fb41d36aecc65e746bd9bba430f42280, type: 3}
+      propertyPath: m_Size.x
+      value: 8.695709
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669304913880182776, guid: fb41d36aecc65e746bd9bba430f42280, type: 3}
+      propertyPath: m_Center.x
+      value: 3.4951582
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669304913880182776, guid: fb41d36aecc65e746bd9bba430f42280, type: 3}
+      propertyPath: m_Center.z
+      value: 7.17422e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669304914867755980, guid: fb41d36aecc65e746bd9bba430f42280, type: 3}
+      propertyPath: m_Size.x
+      value: 21.066902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669304914867755980, guid: fb41d36aecc65e746bd9bba430f42280, type: 3}
+      propertyPath: m_Center.x
+      value: 7.5916786
+      objectReference: {fileID: 0}
     - target: {fileID: 1669304915234914776, guid: fb41d36aecc65e746bd9bba430f42280, type: 3}
       propertyPath: m_Name
       value: FirstContactMap

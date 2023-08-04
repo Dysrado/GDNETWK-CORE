@@ -34,11 +34,10 @@ public class PlayerManager : MonoBehaviour
     public CapsuleCollider capsuleCollider;
     public GameObject bodyRenderer;
 
-    GameObject[] respawnPoints;
+    [SerializeField] private GameObject[] respawnPoints;
 
     private void Awake()
     {
-        respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
 
     }
 
@@ -68,7 +67,7 @@ public class PlayerManager : MonoBehaviour
 
         // Is Dead
         isDead = false;
-
+        respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
     }
 
     // Update is called once per frame
@@ -201,7 +200,11 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnTime);
         currentHealth = 100;
-        int random = UnityEngine.Random.Range(0, respawnPoints.Length);
+        if (respawnPoints.Length == 0)
+        {
+            respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
+        }
+        int random = UnityEngine.Random.Range(0, respawnPoints.Length - 1);
         respawnPoint = respawnPoints[random];
         gameObject.transform.position = respawnPoint.transform.position; // Set Player Position to Spawn Point
         isDead = false;
