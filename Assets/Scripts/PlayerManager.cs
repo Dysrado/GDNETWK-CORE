@@ -73,26 +73,28 @@ public class PlayerManager : MonoBehaviour
 
             if(respawnPoints.Length > 0)
             {
-                if (playerID == 0)
-                {
-                    respawnPoint = respawnPoints[0];
-                }
-                else if (playerID == 1)
-                {
-                    respawnPoint = respawnPoints[1];
-                }
-                else if (playerID == 2)
-                {
-                    respawnPoint = respawnPoints[2];
-                }
-                else if (playerID == 3)
-                {
-                    respawnPoint = respawnPoints[3];
-                }
-                else
-                {
-                    Debug.Log("5 / 4 Players, Not Enough Spawn Points.");
-                }
+                //if (playerID == 0)
+                //{
+                //    respawnPoint = respawnPoints[0];
+                //}
+                //else if (playerID == 1)
+                //{
+                //    respawnPoint = respawnPoints[1];
+                //}
+                //else if (playerID == 2)
+                //{
+                //    respawnPoint = respawnPoints[2];
+                //}
+                //else if (playerID == 3)
+                //{
+                //    respawnPoint = respawnPoints[3];
+                //}
+                //else
+                //{
+                //    Debug.Log("5 / 4 Players, Not Enough Spawn Points.");
+                //}
+
+                respawnPoint = respawnPoints[playerID % respawnPoints.Length];
             }
             
         }
