@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
-using UnityEditor.PackageManager;
+
 
 
 public class WeaponClass : NetworkBehaviour
