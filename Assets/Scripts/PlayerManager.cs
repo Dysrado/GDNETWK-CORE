@@ -34,6 +34,14 @@ public class PlayerManager : MonoBehaviour
     public CapsuleCollider capsuleCollider;
     public GameObject bodyRenderer;
 
+    GameObject[] respawnPoints;
+
+    private void Awake()
+    {
+        respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +77,6 @@ public class PlayerManager : MonoBehaviour
         // Set Respawn Points
         if(respawnPoint == null)
         {
-            GameObject[] respawnPoints = GameObject.FindGameObjectsWithTag("RespawnPoint");
 
             if(respawnPoints.Length > 0)
             {
@@ -93,8 +100,7 @@ public class PlayerManager : MonoBehaviour
                 //{
                 //    Debug.Log("5 / 4 Players, Not Enough Spawn Points.");
                 //}
-
-                respawnPoint = respawnPoints[playerID % respawnPoints.Length];
+                
             }
             
         }
@@ -183,8 +189,8 @@ public class PlayerManager : MonoBehaviour
             isDead = true;
             bodyRenderer.SetActive(false);
             capsuleCollider.enabled = false;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
             int ownerId = this.gameObject.GetComponent<PlayerNetworkV2>().GetNetworkID();
             GamaManager.Instance.Killed(ownerId, shooterID);
             StartCoroutine(RespawnPlayer());  
@@ -195,12 +201,15 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnTime);
         currentHealth = 100;
+        int random = UnityEngine.Random.Range(0, respawnPoints.Length);
+        respawnPoint = respawnPoints[random];
         gameObject.transform.position = respawnPoint.transform.position; // Set Player Position to Spawn Point
         isDead = false;
         bodyRenderer.SetActive(true);
         capsuleCollider.enabled = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
 
     }
 
